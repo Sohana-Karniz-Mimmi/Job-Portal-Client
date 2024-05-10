@@ -118,7 +118,7 @@ const Register = () => {
     return (
         <>
             <Helmet>
-                <title>Register - Turio</title>
+                <title>Register - Job-Portal</title>
             </Helmet>
 
             <div className="font-[sans-serif] text-[#333]">
