@@ -7,8 +7,7 @@ const JobCard = ({ job }) => {
     _id,
     job_title,
     description,
-    min_price,
-    max_price,
+    salary_range,
     category,
     deadline,
     bid_count,
@@ -36,7 +35,7 @@ const JobCard = ({ job }) => {
           {description.substring(0, 70)}...
         </p>
         <p className='mt-2 text-sm font-bold text-gray-600 '>
-          Range: ${min_price} - ${max_price}
+          Range: ${salary_range}
         </p>
         <p className='mt-2 text-sm font-bold text-gray-600 '>
           Bid Count: {bid_count}
