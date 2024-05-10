@@ -3,33 +3,16 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import './navbar.css'
 // import logo from "../assets/images/logo/logo3.png";
-// import { Tooltip as ReactTooltip } from 'react-tooltip'
+import { Tooltip as ReactTooltip } from 'react-tooltip'
 
 const Navbar = () => {
 
-    // const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)
 
-    // const [theme, setTheme] = useState(() => {
-    //     // Initialize theme from localStorage or default to 'light'
-    //     return localStorage.getItem('theme') || 'light';
-    // });
-
-    // const handleToggle = (e) => {
-    //     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
-    // };
-
-    // useEffect(() => {
-    //     // Update localStorage when theme changes
-    //     localStorage.setItem('theme', theme);
-    //     // Update data-theme attribute
-    //     document.documentElement.setAttribute('data-theme', theme);
-    // }, [theme]);
-
-
+    // Dark and Light Theme Implement
     const [theme, setTheme] = useState(
         localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
     );
-
     const handleToggle = (e) => {
         if (e.target.checked) {
             setTheme("dark");
@@ -37,7 +20,6 @@ const Navbar = () => {
             setTheme("light");
         }
     };
-
     useEffect(() => {
         localStorage.setItem("theme", theme);
         const localTheme = localStorage.getItem("theme");
@@ -50,43 +32,45 @@ const Navbar = () => {
 
     const navLinks = <>
         <li> <NavLink className={({ isActive }) =>
-            isActive ? 'p-0 pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-green-600' : 'font-bold p-0 hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 border-green-600 mt-2'
+            isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-[#fe9703]'
+                :
+                'font-bold p-0 transition-all duration-200 ease-in-out hover:pb-1 hover:text-[#fe9703] hover:rounded-none text-[16px] hover:border-b-2 border-[#fe9703] mt-2'
         } to={'/'}> Home </NavLink> </li>
 
         <li> <NavLink className={({ isActive }) =>
-            isActive ? 'p-0 pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-green-600'
+            isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-[#fe9703]'
                 :
-                'font-bold p-0 hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-green-600'
-        } to={'/about'}>About </NavLink> </li>
+                'font-bold p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
+        } to={'/allJob'}>All Jobs </NavLink> </li>
 
-        {/* {user && <> */}
-
-            <li> <NavLink className={({ isActive }) =>
-                isActive ? 'p-0 pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-green-600'
-                    :
-                    'font-bold p-0 hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-green-600'
-            } to={'/service'}> Service </NavLink> </li>
-
+        {user && <>
 
             <li> <NavLink className={({ isActive }) =>
-                isActive ? 'p-0 pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-green-600'
+                isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-[#fe9703]'
                     :
-                    'font-bold p-0 hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-green-600'
-            } to={'/blog'}> Bolg </NavLink> </li>
+                    'font-bold p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
+            } to={'/appliedJobs'}> Applied Jobs </NavLink> </li>
+
 
             <li> <NavLink className={({ isActive }) =>
-                isActive ? 'p-0 pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-green-600'
+                isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-[#fe9703]'
                     :
-                    'font-bold p-0 hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-green-600'
-            } to={'/contact'}> Contact </NavLink> </li>
+                    'font-bold p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
+            } to={'/addJob'}> Add A Job </NavLink> </li>
 
             <li> <NavLink className={({ isActive }) =>
-                isActive ? 'p-0 pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-green-600'
+                isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-[#fe9703]'
                     :
-                    'font-bold p-0 hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-green-600'
-            } to={'/bookings'}> Bookings </NavLink> </li>
+                    'font-bold p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
+            } to={'/myJobs'}> My Jobs </NavLink> </li>
 
-        {/* </>} */}
+        </>}
+
+        <li> <NavLink className={({ isActive }) =>
+            isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-[#fe9703]'
+                :
+                'font-bold p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
+        } to={'/blogs'}> Blogs </NavLink> </li>
 
     </>
 
@@ -104,12 +88,13 @@ const Navbar = () => {
 
     return (
 
-        <div className="barlow-regular navbar p-0 md:py-3 py-5 container mx-auto md:px-10 px-1">
-            <div className="navbar-start">
+        <div className=" navbar justify-between barlow-regular min-h-[99px] p-0 md:py-3 py-5 container mx-auto md:px-10 px-1">
+
+            <div className="">
 
                 <details className="dropdown">
                     <summary className="m-1 btn bg-transparent border-none hover:bg-transparent lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 font-bold" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 font-bold" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </summary>
                     <ul className="p-2 shadow dropdown-content z-50 bg-white rounded-box w-52 text-black space-y-2">
                         {
@@ -120,38 +105,40 @@ const Navbar = () => {
 
 
 
-                <Link to={'/'} className="font-bold text-lg md:text-2xl gap-3 flex items-center"> 
-                {/* <img className="md:w-12 md:h-10 w-7 h-7 relative" src={logo} alt="" /> */}
-                <span className="">Car</span></Link>
+                <Link to={'/'} className="font-bold text-lg md:text-2xl gap-3 flex items-center">
+                    {/* <img className="md:w-12 md:h-10 w-7 h-7 relative" src={logo} alt="" /> */}
+                    <span className="">J<span className="text-orange-500">o</span>b<span className="text-orange-500">Portal</span></span></Link>
+
+                {/* Nav Menu */}
+                <div className="navbar-center hidden ml-8 lg:flex">
+                    <ul className="menu-horizontal space-x-5 ">
+                        {
+                            navLinks
+                        }
+                    </ul>
+                </div>
+
             </div>
-            <div className="navbar-center hidden lg:flex">
-                <ul className="menu-horizontal space-x-5 ">
-                    {
-                        navLinks
-                    }
-                </ul>
-            </div>
+
 
             {/* NavEnds */}
-            <div className="navbar-end">
+            <div className="">
                 <div className="md:mr-5 mr-2 mt-1.5">
-                    <label id="darkMode" className="swap swap-rotate">
-
-                    {/* onMouseEnter={() => setIsOpen(true)}
+                    <label onMouseEnter={() => setIsOpen(true)}
                         onMouseLeave={() => setIsOpen(false)}
-                        onClick={() => setIsOpen(false)} */}
+                        onClick={() => setIsOpen(false)} id="darkMode" className="swap swap-rotate">
 
-                        {/* <ReactTooltip
+                        <ReactTooltip
                             anchorId="darkMode"
                             place="bottom"
                             content="Switch between dark and light mode"
                             anchorSelect="#clickable"
                             isOpen={isOpen}
-                        /> */}
+                        />
 
                         {/* this hidden checkbox controls the state */}
                         <input onChange={handleToggle}
-                            checked={theme == "light" ? false : true} type="checkbox"/>
+                            checked={theme == "light" ? false : true} type="checkbox" />
 
 
                         {/* sun icon */}
@@ -198,18 +185,18 @@ const Navbar = () => {
                     </>
                         :
                         <>
-                            <Link to={`/login`} className="md:mr-2 mr-1 relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
-                                <span className="w-full h-full bg-green-600 absolute">
+                            <Link to={`/login`} className="md:mr-2 mr-1 relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-full">
+                                <span className="w-full h-full bg-[#fe9703] absolute">
 
                                 </span>
-                                <span className="relative md:px-6 md:py-2 px-1 transition-all ease-out  rounded-md group-hover:bg-opacity-0 duration-400">
-                                    <span className="relative text-white md:text-[16px] text-sm">Login</span>
+                                <span className="relative md:px-[30px] md:py-1.5 px-1 transition-all ease-out  rounded-md group-hover:bg-opacity-0 duration-400">
+                                    <span className="relative text-white md:text-[15px] text-sm">Login</span>
                                 </span>
                             </Link>
-                            <Link to={`/register`} className=" relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
-                                <span className="w-full h-full bg-green-600 absolute"></span>
-                                <span className="relative md:px-6 md:py-2 px-1 transition-all ease-out rounded-md group-hover:bg-opacity-0 duration-400">
-                                    <span className="relative text-white md:text-[16px] text-sm">Register</span>
+                            <Link to={`/register`} className=" relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-full">
+                                <span className="w-full h-full bg-[#26ae61] absolute"></span>
+                                <span className="relative md:px-[30px] md:py-2 px-1 transition-all ease-out rounded-md group-hover:bg-opacity-0 duration-400 ">
+                                    <span className="relative text-white md:text-[15px] text-sm">Register</span>
                                 </span>
                             </Link>
                         </>
