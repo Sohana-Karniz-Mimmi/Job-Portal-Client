@@ -32,44 +32,44 @@ const Navbar = () => {
 
     const navLinks = <>
         <li> <NavLink className={({ isActive }) =>
-            isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-[#fe9703]'
+            isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#fe9703]'
                 :
-                'font-bold p-0 transition-all duration-200 ease-in-out hover:pb-1 hover:text-[#fe9703] hover:rounded-none text-[16px] hover:border-b-2 border-[#fe9703] mt-2'
+                'font-medium p-0 transition-all duration-200 ease-in-out hover:pb-1 hover:text-[#fe9703] hover:rounded-none text-[16px] hover:border-b-2 border-[#fe9703] mt-2'
         } to={'/'}> Home </NavLink> </li>
 
         <li> <NavLink className={({ isActive }) =>
-            isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-[#fe9703]'
+            isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#fe9703]'
                 :
-                'font-bold p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
+                'font-medium p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
         } to={'/allJob'}>All Jobs </NavLink> </li>
 
         {user && <>
 
             <li> <NavLink className={({ isActive }) =>
-                isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-[#fe9703]'
+                isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#fe9703]'
                     :
-                    'font-bold p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
+                    'font-medium p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
             } to={'/appliedJobs'}> Applied Jobs </NavLink> </li>
 
 
             <li> <NavLink className={({ isActive }) =>
-                isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-[#fe9703]'
+                isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#fe9703]'
                     :
-                    'font-bold p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
+                    'font-medium p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
             } to={'/addJob'}> Add A Job </NavLink> </li>
 
             <li> <NavLink className={({ isActive }) =>
-                isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-[#fe9703]'
+                isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#fe9703]'
                     :
-                    'font-bold p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
+                    'font-medium p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
             } to={'/myJobs'}> My Jobs </NavLink> </li>
 
         </>}
 
         <li> <NavLink className={({ isActive }) =>
-            isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-[#fe9703]'
+            isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#fe9703]'
                 :
-                'font-bold p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
+                'font-medium p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
         } to={'/blogs'}> Blogs </NavLink> </li>
 
     </>

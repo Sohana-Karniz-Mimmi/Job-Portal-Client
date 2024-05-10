@@ -1,7 +1,17 @@
+import { Helmet } from "react-helmet-async";
+import Navbar from "../Components/Navbar";
+
 const AppliedJobs = () => {
     return (
         <div>
-            this is Applied Jobs page
+            <Helmet>
+                <title>Applied Jobs- Job-Portal</title>
+            </Helmet>
+
+            <div>
+                <Navbar></Navbar>
+            </div>
+            this is applied jobs page
         </div>
     );
 };

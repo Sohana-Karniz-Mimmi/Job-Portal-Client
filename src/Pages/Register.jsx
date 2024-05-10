@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import toast from 'react-hot-toast'
 import { IoEyeOffOutline } from "react-icons/io5";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import Navbar from "../Components/Navbar";
 
 
 const Register = () => {
@@ -120,6 +121,9 @@ const Register = () => {
             <Helmet>
                 <title>Register - Job-Portal</title>
             </Helmet>
+            <div>
+                <Navbar></Navbar>
+            </div>
 
             <div className="font-[sans-serif] text-[#333]">
                 <div className=" flex flex-col items-center justify-center">
