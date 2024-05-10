@@ -105,7 +105,7 @@ const Navbar = () => {
 
 
 
-                <Link to={'/'} className="font-bold text-lg md:text-2xl gap-3 flex items-center">
+                <Link to={'/'} className="font-bold text-lg md:text-3xl gap-3 flex items-center">
                     {/* <img className="md:w-12 md:h-10 w-7 h-7 relative" src={logo} alt="" /> */}
                     <span className="">J<span className="text-orange-500">o</span>b<span className="text-orange-500">Portal</span></span></Link>
 
