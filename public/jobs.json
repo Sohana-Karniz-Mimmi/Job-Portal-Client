@@ -1,0 +1,83 @@
+[
+    {
+      "name": "Jane Smith",
+      "job_title": "Frontend Developer",
+      "posting_Date": "2024-05-10",
+      "deadline": "2024-06-10",
+      "salary_range": "$60,000 - $80,000",
+      "applicants_number": 50,
+      "description": "We are seeking a skilled frontend developer to join our team and help us build user-friendly web applications.",
+      "category": "On Site"
+    },
+    {
+      "name": "John Doe",
+      "job_title": "Marketing Manager",
+      "posting_Date": "2024-05-08",
+      "deadline": "2024-06-08",
+      "salary_range": "$70,000 - $90,000",
+      "applicants_number": 30,
+      "description": "We are looking for an experienced marketing manager to develop and implement marketing strategies.",
+      "category": "Hybrid"
+    },
+    {
+      "name": "Jane Smith",
+      "job_title": "Customer Support Representative",
+      "posting_Date": "2024-05-09",
+      "deadline": "2024-06-09",
+      "salary_range": "$40,000 - $50,000",
+      "applicants_number": 20,
+      "description": "We need a dedicated customer support representative to assist our clients with their inquiries and issues.",
+      "category": "Part Time"
+    },
+    {
+      "name": "Michael Johnson",
+      "job_title": "Data Scientist",
+      "posting_Date": "2024-05-07",
+      "deadline": "2024-06-07",
+      "salary_range": "$80,000 - $100,000",
+      "applicants_number": 40,
+      "description": "We are seeking a talented data scientist to analyze large datasets and provide valuable insights.",
+      "category": "Remote"
+    },
+    {
+      "name": "Chris Lee",
+      "job_title": "Graphic Designer",
+      "posting_Date": "2024-05-06",
+      "deadline": "2024-06-06",
+      "salary_range": "$50,000 - $70,000",
+      "applicants_number": 35,
+      "description": "We are looking for a creative graphic designer to produce engaging visual content for our marketing campaigns.",
+      "category": "On Site"
+    },
+    {
+      "name": "Samantha Taylor",
+      "job_title": "Content Writer",
+      "posting_Date": "2024-05-05",
+      "deadline": "2024-06-05",
+      "salary_range": "$45,000 - $60,000",
+      "applicants_number": 25,
+      "description": "We need a talented content writer to create compelling and informative content for our website and blog.",
+      "category": "Remote"
+    },
+    {
+      "name": "David Martinez",
+      "job_title": "Project Manager",
+      "posting_Date": "2024-05-04",
+      "deadline": "2024-06-04",
+      "salary_range": "$90,000 - $110,000",
+      "applicants_number": 60,
+      "description": "We are seeking an experienced project manager to oversee our projects and ensure they are completed on time and within budget.",
+      "category": "On Site"
+    },
+    {
+      "name": "Amanda Wilson",
+      "job_title": "HR Assistant",
+      "posting_Date": "2024-05-03",
+      "deadline": "2024-06-03",
+      "salary_range": "$35,000 - $45,000",
+      "applicants_number": 15,
+      "description": "We are looking for an HR assistant to support our HR department in various administrative tasks.",
+      "category": "Part Time"
+    }
+  ]
+  
