@@ -185,20 +185,14 @@ const Navbar = () => {
                     </>
                         :
                         <>
-                            <Link to={`/login`} className="md:mr-2 mr-1 relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-full">
-                                <span className="w-full h-full bg-[#fe9703] absolute">
-
-                                </span>
-                                <span className="relative md:px-[30px] md:py-1.5 px-1 transition-all ease-out  rounded-md group-hover:bg-opacity-0 duration-400">
-                                    <span className="relative text-white md:text-[15px] text-sm">Login</span>
-                                </span>
-                            </Link>
-                            <Link to={`/register`} className=" relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-full">
-                                <span className="w-full h-full bg-[#26ae61] absolute"></span>
-                                <span className="relative md:px-[30px] md:py-2 px-1 transition-all ease-out rounded-md group-hover:bg-opacity-0 duration-400 ">
-                                    <span className="relative text-white md:text-[15px] text-sm">Register</span>
-                                </span>
-                            </Link>
+                            <div className=" flex ">
+                                <Link to={`/login`} className="md:mr-2 mr-1 md:px-[30px] md:py-[9px] py-0.5 px-1.5 ease-out font-medium tracking-wide text-white md:text-[15px] text-xs capitalize transition-colors duration-300 transform bg-[#fe9703] rounded-full hover:bg-[#26ae61] ">
+                                    Login
+                                </Link>
+                                <Link to={`/register`} className="md:px-[30px] md:py-[9px] px-1 ease-out font-medium tracking-wide text-white md:text-[15px] text-xs capitalize transition-colors duration-300 transform bg-[#26ae61] rounded-full hover:bg-[#fe9703] ">
+                                    Register
+                                </Link>
+                            </div>
                         </>
                 }
 

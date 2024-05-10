@@ -113,7 +113,7 @@ const Login = () => {
     return (
         <>
             <Helmet>
-                <title>Login - Turio</title>
+                <title>Login - Job-Portal</title>
             </Helmet>
 
             <div className="font-[sans-serif] text-[#333]">
