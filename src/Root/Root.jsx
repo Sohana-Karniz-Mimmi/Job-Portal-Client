@@ -11,6 +11,7 @@ import AddJob from "../Pages/AddJob";
 import MyJobs from "../Pages/MyJobs";
 import Blogs from './../Pages/Blogs';
 import ViewDetails from './../Pages/ViewDetails';
+import Update from "../Pages/Update";
 
 const router = createBrowserRouter([
     {
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
             {
                 path: "/allJob",
                 element: <AllJobs></AllJobs>,
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/jobs`)
             },
             {
                 path: "/appliedJobs",
@@ -51,12 +53,12 @@ const router = createBrowserRouter([
             {
                 path: "/job/:id",
                 element: <PrivetRoute><ViewDetails></ViewDetails></PrivetRoute>,
-                // loader: () => fetch(`https://tourism-server-beta.vercel.app/tourists`)
+                loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/job/${params.id}`)
             },
             {
                 path: "/myJobs",
                 element: <PrivetRoute><MyJobs></MyJobs></PrivetRoute>,
-                // loader: () => fetch(`https://tourism-server-beta.vercel.app/tourists`)
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/jobs`)
             },
             {
                 path: "/blogs",
@@ -69,11 +71,11 @@ const router = createBrowserRouter([
             //     element: <CountriesData></CountriesData>,
             //     loader: ({params}) => fetch(`https://tourism-server-beta.vercel.app/countries/${params.countryName}`)
             // },
-            // {
-            //     path: "/update/:id",
-            //     element: <PrivetRoute><Update></Update></PrivetRoute>,
-            //     loader: ({ params }) => fetch(`https://tourism-server-beta.vercel.app/single-tourists/${params.id}`)
-            // },
+            {
+                path: "/update/:id",
+                element: <PrivetRoute><Update></Update></PrivetRoute>,
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/job/${params.id}`),
+            },
         ]
     },
 ]);

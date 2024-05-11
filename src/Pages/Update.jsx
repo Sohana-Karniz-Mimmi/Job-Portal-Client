@@ -4,76 +4,42 @@ import Navbar from "../Components/Navbar";
 import { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import useAuth from "../Hook/useAuth";
-
-// import { useNavigate } from 'react-router-dom'
-// import toast from 'react-hot-toast'
-// import axios from 'axios'
-
-
 import Swal from 'sweetalert2'
 import { useForm } from "react-hook-form";
-import axios from "axios";
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import { useContext } from "react";
+import axios from "axios"
+import { useLoaderData } from "react-router-dom";
 
-const AddJob = () => {
-    const { user } = useAuth()
-    // const navigate = useNavigate()
-
-    const [postDate, setPostDate] = useState(new Date())
-    const [applicationDeadline, setDeadline] = useState(new Date())
-
-    const deadline = new Date(applicationDeadline).toLocaleDateString()
-    const postedDate = new Date(postDate).toLocaleDateString()
-
-    // const handleFormSubmit = async e => {
-    //     e.preventDefault()
-    //     const form = e.target
-    //     const job_title = form.job_title.value
-    //     const email = form.email.value
-    //     const deadline = startDate
-    //     const category = form.category.value
-    //     const min_price = parseFloat(form.min_price.value)
-    //     const max_price = parseFloat(form.max_price.value)
-    //     const description = form.description.value
-
-    //     // const jobData = {
-    //     //     job_title,
-    //     //     deadline,
-    //     //     category,
-    //     //     min_price,
-    //     //     max_price,
-    //     //     description,
-    //     //     buyer: {
-    //     //         email,
-    //     //         name: user?.displayName,
-    //     //         photo: user?.photoURL,
-    //     //     },
-    //     //     bid_count: 0,
-    //     // }
-    //     // try {
-    //     //     const { data } = await axios.post(
-    //     //         `${import.meta.env.VITE_API_URL}/job`,
-    //     //         jobData
-    //     //     )
-    //     //     console.log(data)
-    //     //     toast.success('Job Data Updated Successfully!')
-    //     //     navigate('/my-posted-jobs')
-    //     // } catch (err) {
-    //     //     console.log(err)
-    //     // }
-    // }
+const Update = () => {
 
     // React Hook Form
     const {
         register,
         handleSubmit,
     } = useForm()
+
+    const { user } = useContext(AuthContext);
+    const job = useLoaderData()
+    console.log(job);
+    const [postDate, setPostDate] = useState(new Date())
+    const [applicationDeadline, setDeadline] = useState(new Date())
+
+    const deadline = new Date(applicationDeadline).toLocaleDateString()
+    const postedDate = new Date(postDate).toLocaleDateString()
     const email = user.email
     const displayName = user.displayName
+    const {
+      _id,
+    //   job_title,
+    //   deadline,
+    //   category,
+    //   min_price,
+    //   max_price,
+    //   description,
+    } = job || {}
+    const handleUpdateForm = data => {
 
-    const handleSubmitForm = data => {
-        // data.preventDefault();
-        console.log(data);
         const { job_title, category, salaryRange, description, photo } = data
         const salary = parseFloat(salaryRange)
 
@@ -83,37 +49,36 @@ const AddJob = () => {
                 displayName,
                 buyerPhoto: user?.photoURL,
             },
-            apply_count: 0,
         }
         console.table(jobs);
 
 
-        axios.post(`${import.meta.env.VITE_API_URL}/job`, jobs)
+        axios.put(`${import.meta.env.VITE_API_URL}/job/${_id}`, jobs)
             .then(data => {
-                if (data.data.insertedId) {
+                if (data.data.modifiedCount > 0) {
                     Swal.fire({
-                        title: "Job Added Successfully",
+                        title: "Update Successfully",
                         icon: "success"
                     });
                 }
                 console.log('inside post response data', data);
             })
 
+
     }
 
-
     return (
-        <> <Helmet>
-            <title>Add Job - Job-Portal</title>
-        </Helmet>
-
+        <div>
+            <Helmet>
+                <title>Update Job Post - Job-Portal</title>
+            </Helmet>
             <div>
                 <Navbar></Navbar>
             </div>
             <section className="p-6 barlow-condensed-regular dark:text-gray-900">
 
-                <form onSubmit={handleSubmit(handleSubmitForm)} className="container mx-auto flex justify-center space-y-12">
-                    <fieldset className=" py-10 md:px-16 px-5 rounded-md shadow-sm dark:bg-white border-2 mt-5">
+                <form onSubmit={handleSubmit(handleUpdateForm)} className="container mx-auto flex justify-center space-y-12">
+                <fieldset className=" py-10 md:px-16 px-5 rounded-md shadow-sm dark:bg-white border-2 mt-5">
                         <div className="mb-6 text-center">
                             <h3 className="md:text-4xl text-2xl font-extrabold">Add A Job</h3>
                         </div>
@@ -220,8 +185,9 @@ const AddJob = () => {
                     </fieldset>
                 </form>
             </section>
-        </>
-    )
-}
+        </div>
+    );
+};
 
-export default AddJob
+
+export default Update;

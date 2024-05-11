@@ -8,7 +8,8 @@ const TdStyle = {
     TdButton: `inline-block px-6 py-2.5 border rounded-md border-green-600 hover:border-[#fe9703] hover:bg-[#fe9703] bg-green-600 text-white font-medium`,
 }
 
-const Table = () => {
+const Table = ({ allJobs }) => {
+    // console.log(allJobs);
     return (
         <section className='bg-white dark:bg-dark '>
             <div className='container'>
@@ -27,55 +28,22 @@ const Table = () => {
                                 </thead>
 
                                 <tbody>
-                                    <tr>
-                                        <td className={TdStyle.TdStyle}>Digital Marketing</td>
-                                        <td className={TdStyle.TdStyle2}>24-11-2023</td>
-                                        <td className={TdStyle.TdStyle}>24-11-2023</td>
-                                        <td className={TdStyle.TdStyle2}>$500-$800</td>
-                                        <td className={TdStyle.TdStyle2}>
-                                            <Link to={`/job/:id`}>
-                                                <BadgesItem roundedFull bgOpacity>
-                                                    View Details
-                                                </BadgesItem>
-                                            </Link>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className={TdStyle.TdStyle}>.com</td>
-                                        <td className={TdStyle.TdStyle2}>1 Year</td>
-                                        <td className={TdStyle.TdStyle}>$75.00</td>
-                                        <td className={TdStyle.TdStyle2}>$5.00</td>
-
-                                        <td className={TdStyle.TdStyle2}>
-                                            <BadgesItem roundedFull bgOpacity>
-                                                View Details
-                                            </BadgesItem>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className={TdStyle.TdStyle}>.com</td>
-                                        <td className={TdStyle.TdStyle2}>1 Year</td>
-                                        <td className={TdStyle.TdStyle}>$75.00</td>
-                                        <td className={TdStyle.TdStyle2}>$5.00</td>
-
-                                        <td className={TdStyle.TdStyle2}>
-                                            <BadgesItem roundedFull bgOpacity>
-                                                View Details
-                                            </BadgesItem>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className={TdStyle.TdStyle}>.com</td>
-                                        <td className={TdStyle.TdStyle2}>1 Year</td>
-                                        <td className={TdStyle.TdStyle}>$75.00</td>
-                                        <td className={TdStyle.TdStyle2}>$5.00</td>
-
-                                        <td className={TdStyle.TdStyle2}>
-                                            <BadgesItem roundedFull bgOpacity>
-                                                View Details
-                                            </BadgesItem>
-                                        </td>
-                                    </tr>
+                                    {
+                                        allJobs?.map(job =>
+                                            <tr key={job._id}>
+                                                <td className={TdStyle.TdStyle}>{job.job_title}</td>
+                                                <td className={TdStyle.TdStyle2}>{job.posting_Date}</td>
+                                                <td className={TdStyle.TdStyle}>{job.deadline}</td>
+                                                <td className={TdStyle.TdStyle2}>{job.salary_range}</td>
+                                                <td className={TdStyle.TdStyle2}>
+                                                    <Link to={`/job/${job._id}`}>
+                                                        <BadgesItem roundedFull bgOpacity>
+                                                            View Details
+                                                        </BadgesItem>
+                                                    </Link>
+                                                </td>
+                                            </tr>)
+                                    }
                                 </tbody>
                             </table>
                         </div>
@@ -84,6 +52,10 @@ const Table = () => {
             </div>
         </section>
     )
+};
+
+Table.propTypes = {
+    allJobs: PropTypes.node,
 };
 
 export default Table;
@@ -122,6 +94,7 @@ const BadgesItem = ({
         </span>
     )
 }
+
 
 BadgesItem.propTypes = {
     children: PropTypes.node,
