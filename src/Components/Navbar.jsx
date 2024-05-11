@@ -165,7 +165,7 @@ const Navbar = () => {
                                 </div>
                             </div>
 
-                            <Link to={`/`} onClick={handleLogoutBtn} className="md:mr-2 mr-1 md:px-[20px] md:py-[11px] py-0.5 px-1.5 ease-out font-bold tracking-wide text-white md:text-[15px] text-xs capitalize transition-colors duration-300 transform bg-[#26ae61] rounded-full hover:bg-[#fe9703] ">
+                            <Link to={`/`} onClick={handleLogoutBtn} className="md:mr-2 mr-1 md:px-[20px] md:py-[11px] py-0.5 px-1.5 ease-out font-bold tracking-wide text-white md:text-[15px] text-xs capitalize transition-colors duration-300 transform bg-green-600 rounded-full hover:bg-[#fe9703] ">
                                Log Out
                             </Link>
 
