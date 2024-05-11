@@ -10,6 +10,7 @@ import AppliedJobs from "../Pages/AppliedJobs";
 import AddJob from "../Pages/AddJob";
 import MyJobs from "../Pages/MyJobs";
 import Blogs from './../Pages/Blogs';
+import ViewDetails from './../Pages/ViewDetails';
 
 const router = createBrowserRouter([
     {
@@ -45,6 +46,11 @@ const router = createBrowserRouter([
             {
                 path: "/addJob",
                 element: <PrivetRoute><AddJob></AddJob></PrivetRoute>,
+                // loader: () => fetch(`https://tourism-server-beta.vercel.app/tourists`)
+            },
+            {
+                path: "/job/:id",
+                element: <PrivetRoute><ViewDetails></ViewDetails></PrivetRoute>,
                 // loader: () => fetch(`https://tourism-server-beta.vercel.app/tourists`)
             },
             {
