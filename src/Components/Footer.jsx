@@ -5,7 +5,7 @@ import footer from "../assets/images/footer.png"
 const Footer = () => {
   return (
     <>
-      <footer className="relative bg-cover bg-fixed bg-center text-white bg-no-repeat z-10 pb-10 pt-10 bg-[#1C2733] lg:pb-4 lg:pt-[110px]" style={{ backgroundImage: `url(${footer})` }} >
+      <footer className="relative bg-cover bg-center text-white bg-no-repeat z-10 pb-10 pt-10 bg-[#1C2733] lg:pb-4 lg:pt-[110px]" style={{ backgroundImage: `url(${footer})` }} >
         <div className="container mx-auto md:px-10 px-5 md:text-start text-center">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4 sm:w-2/3 lg:w-3/12">

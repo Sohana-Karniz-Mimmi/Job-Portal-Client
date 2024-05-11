@@ -56,7 +56,7 @@ const Navbar = () => {
                 isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#fe9703]'
                     :
                     'font-medium p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
-            } to={'/addJob'}> Add A Job </NavLink> </li>
+            } to={'/addJob'}> Add Job </NavLink> </li>
 
             <li> <NavLink className={({ isActive }) =>
                 isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#fe9703]'
@@ -88,7 +88,7 @@ const Navbar = () => {
 
     return (
 
-        <div className=" navbar justify-between barlow-regular min-h-[99px] p-0 md:py-3 py-5 container mx-auto md:px-10 px-1">
+        <div className=" navbar items-center justify-between barlow-regular min-h-[99px] p-0 md:py-3 py-5 container mx-auto md:px-10 px-1">
 
             <div className="">
 
@@ -123,7 +123,7 @@ const Navbar = () => {
 
             {/* NavEnds */}
             <div className="">
-                <div className="md:mr-5 mr-2 mt-1.5">
+                <div className="md:mr-5 flex items-center">
                     <label onMouseEnter={() => setIsOpen(true)}
                         onMouseLeave={() => setIsOpen(false)}
                         onClick={() => setIsOpen(false)} id="darkMode" className="swap swap-rotate">
@@ -157,30 +157,19 @@ const Navbar = () => {
                 </div>
                 {
                     user ? <>
+                        <div className="flex items-center gap-2" >
 
-
-                        <ul className="mainMenuItem relative">
-                            <li>
-                                <div className="btn btn-ghost btn-circle avatar text-white">
-                                    <div className=" w-12 rounded-full ">
-                                        <img alt={"User"} src={user.photoURL} />
-                                    </div>
+                            <div className="btn flex items-center btn-ghost btn-circle avatar tooltip hover:tooltip-open tooltip-bottom text-white" data-tip={user?.displayName}>
+                                <div className=" md:w-12 w-8 rounded-full ">
+                                    <img alt={"User"} src={user?.photoURL} />
                                 </div>
+                            </div>
 
-                                <ul className="subMenuItem absolute bg-white right-[-40px] p-4 z-10 w-[150px] border-t-2 border-[#ddd]">
-                                    <li>
-                                        <a className="text-black">{user.displayName}</a>
-                                    </li>
-                                    <Link to={`/`} onClick={handleLogoutBtn} className="w-full mt-2 relative inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
-                                        <span className="w-full h-full bg-green-600 absolute"></span>
-                                        <span className="relative md:px-3 md:py-1.5 px-3 py-1.5 transition-all ease-out rounded-md group-hover:bg-opacity-0 duration-400">
-                                            <span className="relative text-white md:text-[16px] text-sm">Log Out</span>
-                                        </span>
-                                    </Link>
-                                </ul>
+                            <Link to={`/`} onClick={handleLogoutBtn} className="md:mr-2 mr-1 md:px-[20px] md:py-[11px] py-0.5 px-1.5 ease-out font-bold tracking-wide text-white md:text-[15px] text-xs capitalize transition-colors duration-300 transform bg-[#26ae61] rounded-full hover:bg-[#fe9703] ">
+                               Log Out
+                            </Link>
 
-                            </li>
-                        </ul>
+                        </div>
 
                     </>
                         :
