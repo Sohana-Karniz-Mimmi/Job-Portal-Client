@@ -1,7 +1,6 @@
 import Navbar from "../Components/Navbar";
 import { useLoaderData } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
 import { AiOutlineDollar } from "react-icons/ai";
 import { PiUsersFour } from "react-icons/pi";
 import Modal from "../Components/Modal";
@@ -12,7 +11,7 @@ const ViewDetails = () => {
     const loadedDetailsData = useLoaderData()
     // console.log(loadedDetailsData);
 
-    const {_id, name, job_title, posting_Date, deadline, salary_range, applicants_number, description, category, buyer } = loadedDetailsData
+    const {_id, job_title, postedDate, deadline, salary, apply_count, description, category, buyer, photo } = loadedDetailsData
 
     return (
         <div className="">
@@ -35,20 +34,17 @@ const ViewDetails = () => {
                         <div>
                             <Modal job_title={job_title} 
                                     category={category} 
-                                    salary={salary_range}
+                                    salary={salary}
                                     _id={_id}
                                     buyer={buyer}
                                     >
                             </Modal>
-                            {/* <Link className="md:px-4 md:py-2 px-3 py-2 border rounded-full hover:bg-[#fe9703] bg-green-600 font-semibold text-white duration-300 border-green-600 hover:border-[#fe9703] text-center transition-all ease-out md:text-[16px] text-sm">
-                                Apply_Now
-                            </Link> */}
                         </div>
                     </div>
                     <div className="flex items-center gap-6">
                         <div className="avatar">
                             <div className="w-16 rounded">
-                                <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" alt="Tailwind-CSS-Avatar-component" />
+                                <img src={photo} />
                             </div>
                         </div>
                         <div>
@@ -59,10 +55,10 @@ const ViewDetails = () => {
                             </div>
                             <div className="flex items-center gap-6">
                                 <p className='flex items-center gap-2 mt-2 text-sm font-medium'>
-                                    <AiOutlineDollar className=' text-lg' /> Salary: ${salary_range}
+                                    <AiOutlineDollar className=' text-lg' /> Salary: ${salary}
                                 </p>
                                 <p className='flex items-center gap-2 mt-2 text-sm font-medium'>
-                                    <PiUsersFour className=' text-lg' />Applicants: {applicants_number}
+                                    <PiUsersFour className=' text-lg' />Applicants: {apply_count}
                                 </p>
                             </div>
                         </div>
@@ -96,7 +92,7 @@ const ViewDetails = () => {
                                         Owner Name
                                     </th>
                                     <td className="px-2 font-semibold text-[#667488] dark:text-[#1c2733] py-2">
-                                        {name}
+                                        {buyer?.displayName}
                                     </td>
                                 </tr>
                                 <tr className="text-black">
@@ -120,7 +116,7 @@ const ViewDetails = () => {
                                         Posted
                                     </th>
                                     <td className="px-2 font-semibold text-[#1c2733] py-2">
-                                        {posting_Date}
+                                        {postedDate}
                                     </td>
                                 </tr>
                                 <tr className="text-black">
@@ -136,7 +132,7 @@ const ViewDetails = () => {
                                         Applied
                                     </th>
                                     <td className="px-2 font-semibold text-[#1c2733] py-2">
-                                        {applicants_number}
+                                        {apply_count}
                                     </td>
                                 </tr>
                                 <tr className="text-black">
