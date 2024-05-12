@@ -6,16 +6,17 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import { format } from 'date-fns';
 
 const Modal = ({_id, job_title, category, salary, buyer }) => {
 
     const { user } = useAuth()
     const navigate = useNavigate()
-    const [applicationDeadline, setDeadline] = useState(new Date())
     const buyer_email = buyer?.email
     const jobId =  _id
-
-    const deadline = new Date(applicationDeadline).toLocaleDateString()
+    
+    const [applicationDeadline, setDeadline] = useState(new Date())
+    const deadline = format(applicationDeadline, 'dd-MM-yyyy');
 
     const handleApplyForm = async e => {
         e.preventDefault();
@@ -29,7 +30,7 @@ const Modal = ({_id, job_title, category, salary, buyer }) => {
         const resumeLink = form.resumeLink.value
         // console.log(name, email, resumeLink);
 
-        const applyJob = {jobId, job_title, salary, userName, email, deadline, resumeLink, category, buyer_email, buyer} 
+        const applyJob = {jobId, job_title, salary, userName, email, deadline, resumeLink, category, buyer_email, buyer}
         console.table(applyJob);
         
         await axios.post(`${import.meta.env.VITE_API_URL}/apply`, applyJob)
@@ -82,7 +83,7 @@ const Modal = ({_id, job_title, category, salary, buyer }) => {
                             <input name='email' value={user?.email} type="text" className="grow" placeholder="Email" />
                         </label>
                         <label className="input input-bordered flex items-center gap-2">
-                        <DatePicker
+                        <DatePicker required
                                         selected={applicationDeadline}
                                         onChange={date => setDeadline(date)}
                                     />
@@ -92,7 +93,7 @@ const Modal = ({_id, job_title, category, salary, buyer }) => {
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70">
                                 <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
                             </svg>
-                            <input name='resumeLink' type="text" className="grow" placeholder="Resume Link" />
+                            <input required name='resumeLink' type="text" className="grow" placeholder="Resume Link" />
                         </label>
                         <div className="text-center">
                             <button type="submit" className="btn btn-block">Submit</button>

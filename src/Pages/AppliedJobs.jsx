@@ -3,7 +3,7 @@ import Navbar from "../Components/Navbar";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import axios from "axios";
-import { RiArrowDropDownLine } from "react-icons/ri";
+// import { RiArrowDropDownLine } from "react-icons/ri";
 
 
 const AppliedJobs = () => {

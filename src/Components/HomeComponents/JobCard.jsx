@@ -34,10 +34,10 @@ const JobCard = ({ job }) => {
         </h1>
         <div className='flex justify-between items-center'>
           <p className='mt-2 text-sm'>
-            Posting Date: {new Date(postedDate).toLocaleDateString()}
+            Posting Date: {postedDate}
           </p>
           <p className='mt-2 text-sm'>
-            Deadline: {new Date(deadline).toLocaleDateString()}
+            Deadline: {deadline}
           </p>
         </div>
 

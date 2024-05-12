@@ -4,7 +4,6 @@ import Navbar from "../Components/Navbar";
 import { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import Swal from 'sweetalert2'
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { useContext } from "react";

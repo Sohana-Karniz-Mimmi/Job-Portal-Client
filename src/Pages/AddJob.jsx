@@ -5,6 +5,7 @@ import { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import useAuth from "../Hook/useAuth";
+import { format } from 'date-fns';
 
 // import { useNavigate } from 'react-router-dom'
 // import toast from 'react-hot-toast'
@@ -22,8 +23,8 @@ const AddJob = () => {
     const [postDate, setPostDate] = useState(new Date())
     const [applicationDeadline, setDeadline] = useState(new Date())
 
-    const deadline = new Date(applicationDeadline).toLocaleDateString()
-    const postedDate = new Date(postDate).toLocaleDateString()
+    const postedDate = format(postDate, 'dd-MM-yyyy');
+    const deadline = format(applicationDeadline, 'dd-MM-yyyy');
 
     // const handleFormSubmit = async e => {
     //     e.preventDefault()
