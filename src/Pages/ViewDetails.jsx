@@ -1,9 +1,9 @@
-import Navbar from "../Components/Navbar";
 import { useLoaderData } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { AiOutlineDollar } from "react-icons/ai";
 import { PiUsersFour } from "react-icons/pi";
 import Modal from "../Components/Modal";
+import DetailsBanner from "../Components/DetailsBanner";
 
 
 const ViewDetails = () => {
@@ -14,15 +14,15 @@ const ViewDetails = () => {
     const {_id, job_title, postedDate, deadline, salary, apply_count, description, category, buyer, photo } = loadedDetailsData
 
     return (
-        <div className="">
+        <div className=" relative">
             <Helmet>
                 <title>{job_title} - Job-Portal</title>
             </Helmet>
             <div>
-                <Navbar></Navbar>
+                <DetailsBanner></DetailsBanner>
             </div>
 
-            <div className="barlow-condensed-regular md:mt-2 lg:flex gap-6 justify-between container mx-auto md:px-10 px-1 mb-10">
+            <div className="barlow-condensed-regular bg-black md:mt-2 lg:flex gap-6 justify-between container mx-auto md:px-10 px-1 mb-10">
 
                 {/* main content */}
                 <div className="relative">

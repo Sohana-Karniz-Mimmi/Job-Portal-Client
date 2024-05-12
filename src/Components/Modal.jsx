@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import axios from "axios";
 import useAuth from "../Hook/useAuth";
 import toast from "react-hot-toast";
@@ -32,8 +33,12 @@ const Modal = ({_id, job_title, category, salary, buyer }) => {
         .then(data => {
             console.log(data.data)
             toast.success('Apply Successfully!')
-            // navigate('/appliedJobs')
+            navigate('/appliedJobs')
         })
+        .catch((error) => {
+            // console.log(error.response.data);
+            toast.error(error.response.data)
+          });
     }
 
     return (
@@ -95,5 +100,15 @@ const Modal = ({_id, job_title, category, salary, buyer }) => {
         </>
     );
 };
+
+Modal.propTypes = {
+    children: PropTypes.node,
+    _id:  PropTypes.node, 
+    job_title:  PropTypes.node, 
+    category:  PropTypes.node, 
+    salary:  PropTypes.node, 
+    buyer:  PropTypes.node
+};
+
 
 export default Modal;
