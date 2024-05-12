@@ -9,7 +9,8 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { useContext } from "react";
 import axios from "axios"
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Update = () => {
 
@@ -21,7 +22,8 @@ const Update = () => {
 
     const { user } = useContext(AuthContext);
     const job = useLoaderData()
-    console.log(job);
+    const navigate = useNavigate()
+    // console.log(job);
     const [postDate, setPostDate] = useState(new Date())
     const [applicationDeadline, setDeadline] = useState(new Date())
 
@@ -50,18 +52,16 @@ const Update = () => {
                 buyerPhoto: user?.photoURL,
             },
         }
-        console.table(jobs);
+        // console.table(jobs);
 
 
         axios.put(`${import.meta.env.VITE_API_URL}/job/${_id}`, jobs)
             .then(data => {
                 if (data.data.modifiedCount > 0) {
-                    Swal.fire({
-                        title: "Update Successfully",
-                        icon: "success"
-                    });
+                    navigate('/myJobs')
+                    toast.success('Update Successfully')
                 }
-                console.log('inside post response data', data);
+                // console.log('inside post response data', data);
             })
 
 

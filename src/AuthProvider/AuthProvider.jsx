@@ -4,6 +4,7 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { GithubAuthProvider } from "firebase/auth";
 import { createContext, useEffect, useState } from 'react';
 import auth from '../Firebase/firebase.config';
+import axios from 'axios';
 // import axios from 'axios';
 
 export const AuthContext = createContext(null);
@@ -52,21 +53,21 @@ const AuthProvider = ({ children }) => {
             setLoading(false);
             setUser(currentUser);
             console.log('save user', currentUser);
-            // const userEmail = currentUser?.email || user?.email;
-            // const loggedUser = { email: userEmail };
-            // if(currentUser){
-            //     axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
-            //         .then(data => {
-            //             console.log('token response', data.data);
-            //         })
-            // }
-            // else{
-            //     axios.post('http://localhost:5000/logout', loggedUser, { withCredentials: true })
-            //         .then(data => {
-            //             console.log(data.data);
-            //         })
-            //     console.log('ami nai');
-            // }
+            const userEmail = currentUser?.email || user?.email;
+            const loggedUser = { email: userEmail };
+            if(currentUser){
+                axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
+                    .then(data => {
+                        console.log('token response', data.data);
+                    })
+            }
+            else{
+                axios.post('http://localhost:5000/logout', loggedUser, { withCredentials: true })
+                    .then(data => {
+                        console.log(data.data);
+                    })
+                console.log('ami nai');
+            }
             
         });
         return () => {

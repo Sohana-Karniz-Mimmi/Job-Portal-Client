@@ -58,7 +58,7 @@ const router = createBrowserRouter([
             {
                 path: "/myJobs",
                 element: <PrivetRoute><MyJobs></MyJobs></PrivetRoute>,
-                loader: () => fetch(`${import.meta.env.VITE_API_URL}/jobs`)
+                // loader: () => fetch(`${import.meta.env.VITE_API_URL}/jobs`)
             },
             {
                 path: "/blogs",

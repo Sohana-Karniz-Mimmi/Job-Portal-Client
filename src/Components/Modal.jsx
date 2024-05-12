@@ -19,7 +19,10 @@ const Modal = ({_id, job_title, category, salary, buyer }) => {
 
     const handleApplyForm = async e => {
         e.preventDefault();
-        // if (user?.email === buyer?.email) return toast.error('Action not permitted!')
+    //     if (user?.email === buyer?.email){
+    //         navigate(location?.pathname);
+    //         return toast.error('Action not permitted!')
+    // }
         const form = e.target
         const userName = form.userName.value
         const email = form.email.value

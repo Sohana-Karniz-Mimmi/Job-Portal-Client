@@ -22,7 +22,7 @@ const ViewDetails = () => {
                 <DetailsBanner></DetailsBanner>
             </div>
 
-            <div className="barlow-condensed-regular bg-black md:mt-2 lg:flex gap-6 justify-between container mx-auto md:px-10 px-1 mb-10">
+            <div className="barlow-condensed-regular py-10 md:mt-2 lg:flex gap-6 justify-between container mx-auto md:px-10 px-1 mb-10">
 
                 {/* main content */}
                 <div className="relative">

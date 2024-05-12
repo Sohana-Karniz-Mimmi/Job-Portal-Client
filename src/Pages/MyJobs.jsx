@@ -1,24 +1,28 @@
 import { Helmet } from "react-helmet-async";
 import Navbar from "../Components/Navbar";
 
-import { useContext, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Swal from 'sweetalert2';
 import { Link } from "react-router-dom";
-import { AuthContext } from "../AuthProvider/AuthProvider";
+import useAuth from "../Hook/useAuth";
+import useAxiosSecure from "../Hook/useAxiosSecure";
 
 const MyJobs = () => {
 
-    const loadedMyJobList = useLoaderData()
-    console.log(loadedMyJobList);
-    const { user } = useContext(AuthContext);
-    // console.log(user?.email);
-    const remainingMyJobList = loadedMyJobList.filter(JobItem => JobItem?.buyer?.email == user?.email)
-    console.log(remainingMyJobList);
-    const [myJobs, setMyJobList] = useState(remainingMyJobList);
+    const axiosSecure = useAxiosSecure()
+    const { user } = useAuth()
+    const [jobs, setJobs] = useState([])
+
+    useEffect(() => {
+        getData()
+    }, [user])
+
+    const getData = async () => {
+        const { data } = await axiosSecure(`/jobs/${user?.email}`)
+        setJobs(data)
+    }
 
     const handleDelete = id => {
-        console.log(id);
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -30,28 +34,23 @@ const MyJobs = () => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`${import.meta.env.VITE_API_URL}/job/${id}`, {
-                        method: 'DELETE',
-                    })
-                        .then(res => res.json())
+                    axiosSecure.delete(`/job/${id}`)
                         .then(data => {
-                            console.log(data);
-                            if (data.deletedCount > 0) {
+                            if (data.data.deletedCount > 0) {
                                 Swal.fire({
                                     title: "Deleted!",
                                     text: "Your Job has been deleted.",
                                     icon: "success"
                                 });
 
-                                const remaining = myJobs.filter(myJobEmail => myJobEmail._id !== id)
-                                setMyJobList(remaining);
+                                //refresh ui
+                                getData()
                             }
                         })
                 }
             })
 
     }
-
 
     return (
         <div>
@@ -82,7 +81,7 @@ const MyJobs = () => {
                         <tbody className=" text-sm">
                             {/* row 1 */}
                             {
-                                myJobs?.map((myJob) =>
+                                jobs?.map((myJob) =>
                                     <tr key={myJob._id} className="">
                                         <th>{myJob.job_title}</th>
                                         <th>
