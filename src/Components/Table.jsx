@@ -32,9 +32,9 @@ const Table = ({ allJobs }) => {
                                         allJobs?.map(job =>
                                             <tr key={job._id}>
                                                 <td className={TdStyle.TdStyle}>{job.job_title}</td>
-                                                <td className={TdStyle.TdStyle2}>{job.posting_Date}</td>
+                                                <td className={TdStyle.TdStyle2}>{job.postedDate}</td>
                                                 <td className={TdStyle.TdStyle}>{job.deadline}</td>
-                                                <td className={TdStyle.TdStyle2}>{job.salary_range}</td>
+                                                <td className={TdStyle.TdStyle2}>{job.salary}</td>
                                                 <td className={TdStyle.TdStyle2}>
                                                     <Link to={`/job/${job._id}`}>
                                                         <BadgesItem roundedFull bgOpacity>
