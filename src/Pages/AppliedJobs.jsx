@@ -1,8 +1,25 @@
 import { Helmet } from "react-helmet-async";
 import Navbar from "../Components/Navbar";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import axios from "axios";
 
 
 const AppliedJobs = () => {
+
+    const { user } = useContext(AuthContext)
+    const [appliedJob, setAppliedJob] = useState([]);
+    useEffect(() => {
+        getData()
+    }, [user])
+
+    const getData = async () => {
+        const { data } = await axios(`${import.meta.env.VITE_API_URL}/my-apply/${user?.email}`)
+        setAppliedJob(data);
+    }
+
+    console.log(appliedJob);
+
 
     return (
 
@@ -20,7 +37,7 @@ const AppliedJobs = () => {
                 <h2 className="text-2xl md:text-4xl font-bold text-center pb-5">Applied Jobs</h2>
                 <div className='flex items-center gap-x-3'>
                     <span className='px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full '>
-                    Total Applied 5 
+                        Total Applied {appliedJob.length}
                     </span>
                 </div>
 
@@ -39,13 +56,6 @@ const AppliedJobs = () => {
                                                     <span>Title</span>
                                                 </div>
                                             </th>
-
-                                            <th
-                                                scope='col'
-                                                className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
-                                            >
-                                                <span>Posting Date</span>
-                                            </th>
                                             <th
                                                 scope='col'
                                                 className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
@@ -58,7 +68,7 @@ const AppliedJobs = () => {
                                                 className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
                                             >
                                                 <button className='flex items-center gap-x-2'>
-                                                    <span>Price</span>
+                                                    <span>Salary</span>
                                                 </button>
                                             </th>
 
@@ -82,56 +92,50 @@ const AppliedJobs = () => {
                                         </tr>
                                     </thead>
                                     <tbody className='bg-white divide-y divide-gray-200 '>
-                                        {/* {
-                                            myBids?.map(myBid =>  */}
+                                        {
+                                            appliedJob?.map(apply =>
 
-                                        <tr >
-                                            <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                SEO Optimization
-                                            </td>
+                                                <tr key={apply._id} >
+                                                    <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
+                                                        {apply.job_title}
+                                                    </td>
 
-                                            {/* Posting Date */}
-                                            <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                02-05-204
-                                            </td>
+                                                    {/* Deadline */}
+                                                    <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
+                                                       {apply.deadline}
+                                                    </td>
 
-                                            {/* Deadline */}
-                                            <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                02-05-204
-                                            </td>
+                                                    {/* Price */}
+                                                    <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
+                                                        ${apply.salary}
+                                                    </td>
 
-                                            {/* Price */}
-                                            <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                $500
-                                            </td>
-
-                                            {/* Dynamic category */}
-                                            <td className='px-4 py-4 text-sm whitespace-nowrap'>
-                                                <div className='flex items-center gap-x-2'>
-                                                    <p
-                                                    //                             className={`px-3 py-1 rounded-full 
-                                                    // text-xs ${myBid.category === 'Web Development' && 'text-blue-500 bg-blue-100/60'} ${myBid.category === 'Digital Marketing' && 'text-pink-500 bg-pink-100/60'} ${myBid.category === 'Graphics Design' && 'text-emerald-500 bg-emerald-100/60'}
-                                                    // `}
-                                                    >
-                                                        Digital Marketing
-                                                    </p>
-                                                </div>
-                                            </td>
-                                            {/* Pending */}
-                                            <td className='px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap'>
-                                                <div>
-                                                    <h2 className='text-sm font-normal bg-yellow-100/60 text-yellow-500 inline-flex items-center px-3 py-1 rounded-full gap-x-2'>Pending</h2>
-                                                </div>
-                                            </td>
-                                            {/* Download Button */}
-                                            <td className='px-4 py-4 text-sm whitespace-nowrap'>
-                                                <button className="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        {/* )
-                                        } */}
+                                                    {/* Dynamic category */}
+                                                    <td className='px-4 py-4 text-sm whitespace-nowrap'>
+                                                        <div className='flex items-center gap-x-2'>
+                                                            <p
+                                                                className={`px-3 py-1 rounded-full 
+                                                    text-xs ${apply.category === 'On Site' && 'text-blue-500 bg-blue-100/60'} ${apply.category === 'Remote' && 'text-pink-500 bg-pink-100/60'} ${apply.category === 'Part Time' && 'text-emerald-500 bg-emerald-100/60'} ${apply.category === 'Hybrid' && 'text-violet-500 bg-violet-100/60'}
+                                                    `}
+                                                            >
+                                                                {apply.category}
+                                                            </p>
+                                                        </div>
+                                                    </td>
+                                                    {/* Pending */}
+                                                    <td className='px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap'>
+                                                        <div>
+                                                            <h2 className='text-sm font-normal bg-yellow-100/60 text-yellow-500 inline-flex items-center px-3 py-1 rounded-full gap-x-2'>Pending</h2>
+                                                        </div>
+                                                    </td>
+                                                    {/* Download Button */}
+                                                    <td className='px-4 py-4 text-sm whitespace-nowrap'>
+                                                        <button className="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
+                                                            Download
+                                                        </button>
+                                                    </td>
+                                                </tr>)
+                                        }
                                     </tbody>
                                 </table>
                             </div>

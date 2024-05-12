@@ -1,31 +1,51 @@
+import axios from "axios";
 import useAuth from "../Hook/useAuth";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 
-const Modal = () => {
+const Modal = ({_id, job_title, category, salary, buyer }) => {
 
-    const {user} = useAuth()
+    const { user } = useAuth()
+    const navigate = useNavigate()
+    const [applicationDeadline, setDeadline] = useState(new Date())
+    const buyer_email = buyer?.email
+    const jobId =  _id
 
-    const handleApplyForm = e => {
+    const deadline = new Date(applicationDeadline).toLocaleDateString()
+
+    const handleApplyForm = async e => {
         e.preventDefault();
+        // if (user?.email === buyer?.email) return toast.error('Action not permitted!')
         const form = e.target
         const userName = form.userName.value
         const email = form.email.value
         const resumeLink = form.resumeLink.value
         // console.log(name, email, resumeLink);
 
-        const applyJob = {userName, email, resumeLink}
+        const applyJob = {jobId, job_title, salary, userName, email, deadline, resumeLink, category, buyer_email, buyer} 
         console.table(applyJob);
+        
+        await axios.post(`${import.meta.env.VITE_API_URL}/apply`, applyJob)
+        .then(data => {
+            console.log(data.data)
+            toast.success('Apply Successfully!')
+            // navigate('/appliedJobs')
+        })
     }
 
     return (
         <>
             {/* Open the modal using document.getElementById('ID').showModal() method */}
-            <button className="btn hover:bg-[#fe9703] bg-green-600 font-semibold text-white duration-300 border-green-600 hover:border-[#fe9703] text-center transition-all ease-out" onClick={() => document.getElementById('my_modal_5').showModal()}> 
+            <button className="btn hover:bg-[#fe9703] bg-green-600 font-semibold text-white duration-300 border-green-600 hover:border-[#fe9703] text-center transition-all ease-out" onClick={() => document.getElementById('my_modal_5').showModal()}>
 
-                Apply_Now 
-                </button>
+                Apply_Now
+            </button>
 
             <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-                <div className="modal-box">
+                <div className="modal-box py-14">
 
                     <div className="flex items-center justify-between">
                         <h3 className="font-bold  text-lg pb-4">Apply_Now</h3>
@@ -54,10 +74,17 @@ const Modal = () => {
                             <input name='email' value={user?.email} type="text" className="grow" placeholder="Email" />
                         </label>
                         <label className="input input-bordered flex items-center gap-2">
+                        <DatePicker
+                                        selected={applicationDeadline}
+                                        onChange={date => setDeadline(date)}
+                                    />
+                        </label>
+                        {/* Resume Link */}
+                        <label className="input input-bordered flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70">
                                 <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
                             </svg>
-                            <input name='resumeLink' type="text" className="grow" placeholder="Username" />
+                            <input name='resumeLink' type="text" className="grow" placeholder="Resume Link" />
                         </label>
                         <div className="text-center">
                             <button type="submit" className="btn btn-block">Submit</button>

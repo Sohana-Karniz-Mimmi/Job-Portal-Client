@@ -12,7 +12,7 @@ const ViewDetails = () => {
     const loadedDetailsData = useLoaderData()
     // console.log(loadedDetailsData);
 
-    const { name, job_title, posting_Date, deadline, salary_range, applicants_number, description, category } = loadedDetailsData
+    const {_id, name, job_title, posting_Date, deadline, salary_range, applicants_number, description, category, buyer } = loadedDetailsData
 
     return (
         <div className="">
@@ -33,7 +33,13 @@ const ViewDetails = () => {
                         </div>
 
                         <div>
-                            <Modal></Modal>
+                            <Modal job_title={job_title} 
+                                    category={category} 
+                                    salary={salary_range}
+                                    _id={_id}
+                                    buyer={buyer}
+                                    >
+                            </Modal>
                             {/* <Link className="md:px-4 md:py-2 px-3 py-2 border rounded-full hover:bg-[#fe9703] bg-green-600 font-semibold text-white duration-300 border-green-600 hover:border-[#fe9703] text-center transition-all ease-out md:text-[16px] text-sm">
                                 Apply_Now
                             </Link> */}
@@ -62,7 +68,7 @@ const ViewDetails = () => {
                         </div>
                     </div>
 
-                    {/* Details */}
+                    {/* Description */}
 
                     <div className="p-4 rounded-lg border my-8" >
                         <h2 className="md:text-3xl text-xl font-medium">Description</h2>
