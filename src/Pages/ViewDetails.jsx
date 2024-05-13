@@ -37,6 +37,7 @@ const ViewDetails = () => {
                                     salary={salary}
                                     _id={_id}
                                     buyer={buyer}
+                                    deadline={deadline}
                                     >
                             </Modal>
                         </div>

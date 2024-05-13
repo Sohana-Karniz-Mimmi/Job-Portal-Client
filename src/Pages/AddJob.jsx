@@ -5,7 +5,7 @@ import { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import useAuth from "../Hook/useAuth";
-import { format } from 'date-fns';
+// import { format } from 'date-fns';
 
 // import { useNavigate } from 'react-router-dom'
 // import toast from 'react-hot-toast'
@@ -20,11 +20,11 @@ const AddJob = () => {
     const { user } = useAuth()
     // const navigate = useNavigate()
 
-    const [postDate, setPostDate] = useState(new Date())
-    const [applicationDeadline, setDeadline] = useState(new Date())
+    const [postedDate, setPostDate] = useState(new Date())
+    const [deadline, setDeadline] = useState(new Date())
 
-    const postedDate = format(postDate, 'dd-MM-yyyy');
-    const deadline = format(applicationDeadline, 'dd-MM-yyyy');
+    // const postedDate = format(postDate, 'dd-MM-yyyy');
+    // const deadline = format(applicationDeadline, 'dd-MM-yyyy');
 
     // const handleFormSubmit = async e => {
     //     e.preventDefault()
@@ -151,7 +151,7 @@ const AddJob = () => {
                                 <div className="relative">
                                     <DatePicker
                                         className='md:w-[332px] border w-[300px] rounded-lg px-2 py-2 '
-                                        selected={postDate}
+                                        selected={postedDate}
                                         onChange={date => setPostDate(date)}
                                     />
 
@@ -162,7 +162,7 @@ const AddJob = () => {
                                 <div className="relative">
                                     <DatePicker
                                         className='md:w-[332px] border w-[300px] rounded-lg px-2 py-2 '
-                                        selected={applicationDeadline}
+                                        selected={deadline}
                                         onChange={date => setDeadline(date)}
                                     />
                                 </div>

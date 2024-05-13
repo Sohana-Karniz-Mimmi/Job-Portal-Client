@@ -6,43 +6,56 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import { format } from 'date-fns';
+// import { format } from 'date-fns';
 
-const Modal = ({_id, job_title, category, salary, buyer }) => {
+const Modal = ({ _id, job_title, deadline, category, salary, buyer }) => {
 
     const { user } = useAuth()
     const navigate = useNavigate()
     const buyer_email = buyer?.email
-    const jobId =  _id
-    
-    const [applicationDeadline, setDeadline] = useState(new Date())
-    const deadline = format(applicationDeadline, 'dd-MM-yyyy');
+    const jobId = _id
+
+    const [applyDeadline, setApplyDeadline] = useState(new Date(deadline));
+    const [today, setDeadline] = useState(new Date())
+
+    const isDeadlineOver = today > applyDeadline;
+    console.log('today', today);
+    console.log('deadline', deadline);
+    console.log('isDeadlineOver', isDeadlineOver);
+
+    // const today = format(today, 'dd-MM-yyyy');
 
     const handleApplyForm = async e => {
         e.preventDefault();
-    //     if (user?.email === buyer?.email){
-    //         navigate(location?.pathname);
-    //         return toast.error('Action not permitted!')
-    // }
+        //     if (user?.email === buyer?.email){
+        //         navigate(location?.pathname);
+        //         return toast.error('Action not permitted!')
+        // }
+
+        // date validation 
+        if (isDeadlineOver) {
+            return toast.error('deadline Over')
+        }
+
         const form = e.target
         const userName = form.userName.value
         const email = form.email.value
         const resumeLink = form.resumeLink.value
         // console.log(name, email, resumeLink);
 
-        const applyJob = {jobId, job_title, salary, userName, email, deadline, resumeLink, category, buyer_email, buyer}
+        const applyJob = { jobId, job_title, salary, userName, email, deadline: today, resumeLink, category, buyer_email, buyer }
         console.table(applyJob);
-        
+
         await axios.post(`${import.meta.env.VITE_API_URL}/apply`, applyJob)
-        .then(data => {
-            console.log(data.data)
-            toast.success('Apply Successfully!')
-            navigate('/appliedJobs')
-        })
-        .catch((error) => {
-            // console.log(error.response.data);
-            toast.error(error.response.data)
-          });
+            .then(data => {
+                console.log(data.data)
+                toast.success('Apply Successfully!')
+                navigate('/appliedJobs')
+            })
+            .catch((error) => {
+                // console.log(error.response.data);
+                toast.error(error.response.data)
+            });
     }
 
     return (
@@ -83,10 +96,10 @@ const Modal = ({_id, job_title, category, salary, buyer }) => {
                             <input name='email' value={user?.email} type="text" className="grow" placeholder="Email" />
                         </label>
                         <label className="input input-bordered flex items-center gap-2">
-                        <DatePicker required
-                                        selected={applicationDeadline}
-                                        onChange={date => setDeadline(date)}
-                                    />
+                            <DatePicker required
+                                selected={today}
+                                onChange={date => setDeadline(date)}
+                            />
                         </label>
                         {/* Resume Link */}
                         <label className="input input-bordered flex items-center gap-2">
@@ -107,11 +120,12 @@ const Modal = ({_id, job_title, category, salary, buyer }) => {
 
 Modal.propTypes = {
     children: PropTypes.node,
-    _id:  PropTypes.node, 
-    job_title:  PropTypes.node, 
-    category:  PropTypes.node, 
-    salary:  PropTypes.node, 
-    buyer:  PropTypes.node
+    _id: PropTypes.node,
+    job_title: PropTypes.node,
+    category: PropTypes.node,
+    salary: PropTypes.node,
+    buyer: PropTypes.node,
+    deadline: PropTypes.node
 };
 
 
