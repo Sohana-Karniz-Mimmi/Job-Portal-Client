@@ -3,6 +3,7 @@ import Navbar from "../Components/Navbar";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import axios from "axios";
+import JobPage from "../Components/Pdf";
 // import { RiArrowDropDownLine } from "react-icons/ri";
 
 
@@ -11,7 +12,7 @@ const AppliedJobs = () => {
 
     const { user } = useContext(AuthContext)
     const [appliedJob, setAppliedJob] = useState([]);
-    
+
     const [selectedCategory, setSelectedCategory] = useState('All');
     const filteredJobs = selectedCategory === 'All' ? appliedJob : appliedJob.filter(job => job.category === selectedCategory);
 
@@ -44,23 +45,23 @@ const AppliedJobs = () => {
 
                 {/* Filter */}
                 <div className="flex justify-end">
-                        <select
-                            onChange={e => {
-                                setSelectedCategory(e.target.value)
-                            }}
-                            value={selectedCategory}
-                            name='category'
-                            id='category'
-                            className='border py-4 px-8 rounded-lg border-green-600 outline-none'
-                        >
-                            <option className="bg-white text-black" value=''>Filter By Category</option>
-                            <option className="bg-white text-black"  value='All'>All</option>
-                            <option className="bg-white text-black"  value='On Site'>On Site</option>
-                            <option className="bg-white text-black"  value='Remote'>Remote</option>
-                            <option className="bg-white text-black"  value='Hybrid'>Hybrid</option>
-                            <option className="bg-white text-black"  value='Part Time'>Part Time</option>
-                        </select>
-                    </div>
+                    <select
+                        onChange={e => {
+                            setSelectedCategory(e.target.value)
+                        }}
+                        value={selectedCategory}
+                        name='category'
+                        id='category'
+                        className='border py-4 px-8 rounded-lg border-green-600 outline-none'
+                    >
+                        <option className="bg-white text-black" value=''>Filter By Category</option>
+                        <option className="bg-white text-black" value='All'>All</option>
+                        <option className="bg-white text-black" value='On Site'>On Site</option>
+                        <option className="bg-white text-black" value='Remote'>Remote</option>
+                        <option className="bg-white text-black" value='Hybrid'>Hybrid</option>
+                        <option className="bg-white text-black" value='Part Time'>Part Time</option>
+                    </select>
+                </div>
                 <div className='flex items-center gap-x-3'>
                     <span className='px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full '>
                         Total Applied {filteredJobs.length}
@@ -128,7 +129,7 @@ const AppliedJobs = () => {
 
                                                     {/* Deadline */}
                                                     <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                       {apply.deadline}
+                                                        {apply.deadline}
                                                     </td>
 
                                                     {/* Price */}
@@ -157,7 +158,9 @@ const AppliedJobs = () => {
                                                     {/* Download Button */}
                                                     <td className='px-4 py-4 text-sm whitespace-nowrap'>
                                                         <button className="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                            Download
+
+                                                            {/*Pdf  */}
+                                                            <JobPage />
                                                         </button>
                                                     </td>
                                                 </tr>)
