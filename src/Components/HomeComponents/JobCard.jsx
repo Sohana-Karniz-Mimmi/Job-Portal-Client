@@ -4,16 +4,19 @@ import { LuUserSquare } from 'react-icons/lu'
 import { PiUsersFour } from 'react-icons/pi'
 // import { TfiUser } from 'react-icons/tfi'
 import { Link } from 'react-router-dom'
+import { motion } from "framer-motion"
 
 
 const JobCard = ({ job }) => {
   const {
-   _id, job_title, postedDate, deadline, salary,  photo, buyer,
-  apply_count,
+    _id, job_title, postedDate, deadline, salary, photo, buyer,
+    apply_count,
   } = job || {}
   return (
-    <Link
-      className='lg::w-[365px] w-full px-4 py-3 bg-white rounded-md shadow-md hover:scale-[1.05] transition-all'
+    <motion.div
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+      className='lg::w-[365px] w-full px-4 py-3 bg-white rounded-md shadow-md '
     >
       <div className='flex items-center justify-between'>
         <div className="avatar">
@@ -30,7 +33,7 @@ const JobCard = ({ job }) => {
           {job_title}
         </h1>
         <h1 className='flex items-center gap-2 mt-1 text-[16px] font-medium'>
-        <LuUserSquare />{buyer?.displayName}
+          <LuUserSquare />{buyer?.displayName}
         </h1>
         <div className='flex justify-between items-center'>
           <p className='mt-2 text-sm'>
@@ -42,12 +45,12 @@ const JobCard = ({ job }) => {
         </div>
 
         <p className='flex items-center gap-2 mt-2 text-sm font-medium'>
-        <AiOutlineDollar className=' text-lg' /> Salary: ${salary}
+          <AiOutlineDollar className=' text-lg' /> Salary: ${salary}
         </p>
         <div className='flex justify-between items-center'>
 
           <p className='flex items-center gap-2 mt-2 text-sm font-medium'>
-           <PiUsersFour className=' text-lg' />Applicants: {apply_count}
+            <PiUsersFour className=' text-lg' />Applicants: {apply_count}
           </p>
           <div className=' text-center'>
             <Link to={`/job/${_id}`} className="md:px-4 md:py-2 px-3 py-2 border hover:bg-green-600 group-hover:text-white duration-300 border-green-600 text-center transition-all ease-out text-green-600 md:text-[16px] text-sm btn-outline rounded-md">View Details</Link>
@@ -55,7 +58,7 @@ const JobCard = ({ job }) => {
 
         </div>
       </div>
-    </Link>
+    </motion.div>
   )
 }
 JobCard.propTypes = {

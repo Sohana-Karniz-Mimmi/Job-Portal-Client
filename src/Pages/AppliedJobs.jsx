@@ -177,5 +177,6 @@ const AppliedJobs = () => {
     )
 }
 
+
 export default AppliedJobs
 

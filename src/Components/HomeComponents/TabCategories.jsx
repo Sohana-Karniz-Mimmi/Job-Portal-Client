@@ -4,6 +4,11 @@ import 'react-tabs/style/react-tabs.css'
 import JobCard from './JobCard'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+
+import { motion } from "framer-motion"
+
+
+
 const TabCategories = () => {
   const [jobs, setJobs] = useState([])
   useEffect(() => {
@@ -19,13 +24,25 @@ const TabCategories = () => {
   return (
     <Tabs>
       <div className=' container py-10 mx-auto md:px-10 px-1'>
-        <h1 className='text-xl font-semibold text-center text-gray-800 capitalize lg:text-3xl '>
-        Popular Categories
-        </h1>
 
-        <p className='max-w-2xl mx-auto mt-2 mb-8 text-center text-gray-500 '>
-        Explore our Job Portals to streamline your job search. From the cutting-edge world of Technology to the strategic realm of Finance,
-        </p>
+        <motion.div
+          initial={{ opacity: 0, y:50}}
+          whileInView={{ opacity: 1, y: 0,  transition:{
+            type: 'tween',
+            duration: 1.2,
+            ease: [0.25, 0.25, 0.25, 0.75],
+          } }}
+          viewport={{ once: false, amount: 0.7 }}
+         
+        >
+          <h1 className='text-xl font-semibold text-center text-gray-800 capitalize lg:text-3xl '>
+            Popular Categories
+          </h1>
+
+          <p className='max-w-2xl mx-auto mt-2 mb-8 text-center text-gray-500 '>
+            Explore our Job Portals to streamline your job search. From the cutting-edge world of Technology to the strategic realm of Finance,
+          </p>
+        </motion.div>
         <div className=' text-[#fe9703] flex items-center justify-center'>
           <TabList>
             {/* <Tab>All Jobs</Tab> */}
@@ -88,8 +105,8 @@ const TabCategories = () => {
         <TabPanel>
           <div className='grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3'>
             {jobs.map(job => (
-                <JobCard key={job._id} job={job} />
-              ))}
+              <JobCard key={job._id} job={job} />
+            ))}
           </div>
         </TabPanel>
 
