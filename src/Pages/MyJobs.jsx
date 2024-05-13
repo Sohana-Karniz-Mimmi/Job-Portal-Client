@@ -1,28 +1,45 @@
 import { Helmet } from "react-helmet-async";
 import Navbar from "../Components/Navbar";
-
-import { useEffect, useState } from "react";
 import Swal from 'sweetalert2';
 import { Link } from "react-router-dom";
 import useAuth from "../Hook/useAuth";
 import useAxiosSecure from "../Hook/useAxiosSecure";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+// import { useEffect, useState } from "react";
+// import toast from "react-hot-toast";
 
 const MyJobs = () => {
 
     const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
-    const [jobs, setJobs] = useState([])
 
-    useEffect(() => {
-        getData()
-    }, [user])
+    // const [jobs, setJobs] = useState([])
+
+    // useEffect(() => {
+    //     getData()
+    // }, [user])
+
+
+    // Tanstack Query
+    const QueryClient = useQueryClient()
+
+    // Tanstack Query for get the data   
+    const { data: jobs = [], isLoading, } = useQuery({
+        queryFn: () => getData(),
+        queryKey: ['jobs', user?.email],
+    })
+    console.log(jobs, isLoading);
+
 
     const getData = async () => {
         const { data } = await axiosSecure(`/jobs/${user?.email}`)
-        setJobs(data)
+        // setJobs(data)
+        return data
+
     }
 
-    const handleDelete = id => {
+    // Tanstack Query for get the data
+    const handleDelete = async id => {
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -34,23 +51,53 @@ const MyJobs = () => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    axiosSecure.delete(`/job/${id}`)
-                        .then(data => {
-                            if (data.data.deletedCount > 0) {
-                                Swal.fire({
-                                    title: "Deleted!",
-                                    text: "Your Job has been deleted.",
-                                    icon: "success"
-                                });
+                    mutateAsync({ id, })
+                    // axiosSecure.delete(`/job/${id}`)
+                    // .then(data => {
+                    //     if (data.data.deletedCount > 0) {
+                    //         Swal.fire({
+                    //             title: "Deleted!",
+                    //             text: "Your Job has been deleted.",
+                    //             icon: "success"
+                    //         });
 
-                                //refresh ui
-                                getData()
-                            }
-                        })
+                    //         //refresh ui
+
+                    //         // getData()
+                    //     }
+                    // })
                 }
             })
 
     }
+
+
+
+    const { mutateAsync } = useMutation({
+        mutationFn: async ({ id }) => {
+            const { data } = await axiosSecure.delete(`/job/${id}`)
+            console.log(data)
+            return data
+        },
+        onSuccess: () => {
+            console.log('Wow, data Delete')
+            // toast.success('Delete Successfully')
+            Swal.fire({
+                title: "Deleted!",
+                text: "Your Job has been deleted.",
+                icon: "success"
+            });
+
+            // refresh ui for latest data
+            // refetch()
+
+            // Kothin
+            QueryClient.invalidateQueries({ queryKey: ['jobs'] })
+        },
+    })
+
+
+    if (isLoading) return <p>Data is still loading......</p>
 
     return (
         <div>

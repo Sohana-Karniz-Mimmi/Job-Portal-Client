@@ -1,31 +1,45 @@
 import { Helmet } from "react-helmet-async";
 import Navbar from "../Components/Navbar";
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../AuthProvider/AuthProvider";
-import axios from "axios";
+import { useState } from "react";
 import JobPage from "../Components/Pdf";
+import useAxiosSecure from "../Hook/useAxiosSecure";
+import useAuth from "../Hook/useAuth";
+import { useQuery } from "@tanstack/react-query";
+
+// import axios from "axios";
 // import { RiArrowDropDownLine } from "react-icons/ri";
 
 
 const AppliedJobs = () => {
 
+    const axiosSecure = useAxiosSecure()
 
-    const { user } = useContext(AuthContext)
-    const [appliedJob, setAppliedJob] = useState([]);
+    const { user } = useAuth()
+
+    // const [appliedJob, setAppliedJob] = useState([]);
+    // useEffect(() => {
+    //     getData()
+    // }, [user])
+
+    const { data: appliedJob = [], isLoading, } = useQuery({
+        queryFn: () => getData(),
+        queryKey: ['appliedJob', user?.email],
+    })
+
 
     const [selectedCategory, setSelectedCategory] = useState('All');
     const filteredJobs = selectedCategory === 'All' ? appliedJob : appliedJob.filter(job => job.category === selectedCategory);
 
-    useEffect(() => {
-        getData()
-    }, [user])
-
     const getData = async () => {
-        const { data } = await axios(`${import.meta.env.VITE_API_URL}/my-apply/${user?.email}`)
-        setAppliedJob(data);
+        const { data } =  await axiosSecure(`/my-apply/${user?.email}`)
+        // setAppliedJob(data);
+        return data;
     }
 
     console.log(appliedJob);
+
+
+    if (isLoading) return <p>Data is still loading......</p>
 
 
     return (

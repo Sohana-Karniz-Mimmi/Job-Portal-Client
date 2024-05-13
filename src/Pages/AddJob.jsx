@@ -1,20 +1,15 @@
 import { Helmet } from "react-helmet-async";
 import Navbar from "../Components/Navbar";
-
 import { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import useAuth from "../Hook/useAuth";
 // import { format } from 'date-fns';
-
 // import { useNavigate } from 'react-router-dom'
-// import toast from 'react-hot-toast'
-// import axios from 'axios'
-
-
 import Swal from 'sweetalert2'
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useMutation } from "@tanstack/react-query";
 
 const AddJob = () => {
     const { user } = useAuth()
@@ -88,19 +83,35 @@ const AddJob = () => {
         }
         console.table(jobs);
 
-
-        axios.post(`${import.meta.env.VITE_API_URL}/job`, jobs)
-            .then(data => {
-                if (data.data.insertedId) {
-                    Swal.fire({
-                        title: "Job Added Successfully",
-                        icon: "success"
-                    });
-                }
-                console.log('inside post response data', data);
-            })
+        mutateAsync({ jobs })
+        // axios.post(`${import.meta.env.VITE_API_URL}/job`, jobs)
+        //     .then(data => {
+        //         if (data.data.insertedId) {
+        //             Swal.fire({
+        //                 title: "Job Added Successfully",
+        //                 icon: "success"
+        //             });
+        //         }
+        //         console.log('inside post response data', data);
+        //     })
 
     }
+
+     // Tanstack Query for post the data   
+    const { mutateAsync } = useMutation({
+        mutationFn: async ({ jobs }) => {
+            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/job`, jobs)
+            console.log(data)
+            return data
+        },
+        onSuccess: () => {
+            console.log('Job Added Successfully')
+            Swal.fire({
+                title: "Job Added Successfully",
+                icon: "success"
+            });
+        },
+    })
 
 
     return (

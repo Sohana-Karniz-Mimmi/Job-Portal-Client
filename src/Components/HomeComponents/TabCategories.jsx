@@ -2,22 +2,36 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import 'react-tabs/style/react-tabs.css'
 import JobCard from './JobCard'
-import { useEffect, useState } from 'react'
+// import { useEffect, useState } from 'react'
 import axios from 'axios'
-
 import { motion } from "framer-motion"
-
+import { useQuery } from '@tanstack/react-query'
 
 
 const TabCategories = () => {
-  const [jobs, setJobs] = useState([])
-  useEffect(() => {
-    const getData = async () => {
-      const { data } = await axios(`${import.meta.env.VITE_API_URL}/jobs`)
-      setJobs(data)
-    }
-    getData()
-  }, [])
+
+  // const [jobs, setJobs] = useState([])
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const { data } = await axios(`${import.meta.env.VITE_API_URL}/jobs`)
+  //     setJobs(data)
+  //   }
+  //   getData()
+  // }, [])
+
+  // Tanstack Query
+  const { data: jobs = [], isLoading, } = useQuery({
+    queryFn: () => getData(),
+    queryKey: ['jobs'],
+})
+
+  const getData = async () => {
+    const { data } = await axios(`${import.meta.env.VITE_API_URL}/jobs`)
+    // setJobs(data)
+    return data;
+}
+
+if (isLoading) return <p>Data is still loading......</p>
 
   // console.log(jobs);
 

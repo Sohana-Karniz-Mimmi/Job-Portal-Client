@@ -31,15 +31,9 @@ const router = createBrowserRouter([
                 path: "/register",
                 element: <Register></Register>
             },
-            // {
-            //     path: "/checkout/:id",
-            //     element: <PrivetRoute><Checkout></Checkout></PrivetRoute>,
-            //     loader: ({params}) => fetch(`http://localhost:5000/services/${params.id}`)
-            // },
             {
                 path: "/allJob",
                 element: <AllJobs></AllJobs>,
-                // loader: () => fetch(`${import.meta.env.VITE_API_URL}/jobs`)
             },
             {
                 path: "/appliedJobs",
@@ -48,7 +42,6 @@ const router = createBrowserRouter([
             {
                 path: "/addJob",
                 element: <PrivetRoute><AddJob></AddJob></PrivetRoute>,
-                // loader: () => fetch(`https://tourism-server-beta.vercel.app/tourists`)
             },
             {
                 path: "/job/:id",
@@ -58,19 +51,11 @@ const router = createBrowserRouter([
             {
                 path: "/myJobs",
                 element: <PrivetRoute><MyJobs></MyJobs></PrivetRoute>,
-                // loader: () => fetch(`${import.meta.env.VITE_API_URL}/jobs`)
             },
             {
                 path: "/blogs",
-                element:<Blogs></Blogs>,
-                // loader: () => fetch(`https://tourism-server-beta.vercel.app/tourists`)
+                element:<Blogs></Blogs>
             },
-
-            // {
-            //     path: "/countries/:countryName",
-            //     element: <CountriesData></CountriesData>,
-            //     loader: ({params}) => fetch(`https://tourism-server-beta.vercel.app/countries/${params.countryName}`)
-            // },
             {
                 path: "/update/:id",
                 element: <PrivetRoute><Update></Update></PrivetRoute>,

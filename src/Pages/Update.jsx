@@ -62,8 +62,6 @@ const Update = () => {
                 }
                 // console.log('inside post response data', data);
             })
-
-
     }
 
     return (
