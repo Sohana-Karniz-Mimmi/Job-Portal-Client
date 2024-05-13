@@ -9,7 +9,7 @@ import { motion } from "framer-motion"
 const Counting = () => {
 
     return (
-        <section className="relative mb-16 bg-cover bg-center bg-no-repeat h-[222px]" style={{
+        <section className="relative bg-cover mb-12 bg-center bg-no-repeat h-[222px]" style={{
             backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0)), url(${count})`
         }}
         >
