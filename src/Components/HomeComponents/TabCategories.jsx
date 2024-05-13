@@ -23,15 +23,21 @@ const TabCategories = () => {
   const { data: jobs = [], isLoading, } = useQuery({
     queryFn: () => getData(),
     queryKey: ['jobs'],
-})
+  })
 
   const getData = async () => {
     const { data } = await axios(`${import.meta.env.VITE_API_URL}/jobs`)
     // setJobs(data)
     return data;
-}
+  }
 
-if (isLoading) return <p>Data is still loading......</p>
+  if (isLoading) {
+    return <>
+      <div className="flex items-center justify-center space-x-2 h-screen">
+        <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-[#fe9703]"></div>
+      </div>
+    </>
+  }
 
   // console.log(jobs);
 
@@ -40,16 +46,18 @@ if (isLoading) return <p>Data is still loading......</p>
       <div className=' container py-10 mx-auto md:px-10 px-1'>
 
         <motion.div
-          initial={{ opacity: 0, y:50}}
-          whileInView={{ opacity: 1, y: 0,  transition:{
-            type: 'tween',
-            duration: 1.2,
-            ease: [0.25, 0.25, 0.25, 0.75],
-          } }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{
+            opacity: 1, y: 0, transition: {
+              type: 'tween',
+              duration: 1.2,
+              ease: [0.25, 0.25, 0.25, 0.75],
+            }
+          }}
           viewport={{ once: false, amount: 0.7 }}
-         
+
         >
-          <h1 className='text-xl font-semibold text-center text-gray-800 capitalize lg:text-3xl '>
+          <h1 className='text-xl font-semibold text-center text-gray-800 capitalize lg:text-4xl '>
             Popular Categories
           </h1>
 
@@ -59,22 +67,21 @@ if (isLoading) return <p>Data is still loading......</p>
         </motion.div>
         <div className=' text-[#fe9703] flex items-center justify-center'>
           <TabList>
-            {/* <Tab>All Jobs</Tab> */}
+            <Tab>All Jobs</Tab>
             <Tab>Part Time</Tab>
             <Tab>Hybrid</Tab>
             <Tab>Remote Job</Tab>
             <Tab>On Site Job</Tab>
-            <Tab>All Jobs</Tab>
           </TabList>
         </div>
 
-        {/* <TabPanel>
+        <TabPanel>
           <div className='grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3'>
             {jobs.map(job => (
-                <JobCard key={job._id} job={job} />
-              ))}
+              <JobCard key={job._id} job={job} />
+            ))}
           </div>
-        </TabPanel> */}
+        </TabPanel>
 
         <TabPanel>
           <div className='grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3'>
@@ -115,15 +122,6 @@ if (isLoading) return <p>Data is still loading......</p>
               ))}
           </div>
         </TabPanel>
-
-        <TabPanel>
-          <div className='grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3'>
-            {jobs.map(job => (
-              <JobCard key={job._id} job={job} />
-            ))}
-          </div>
-        </TabPanel>
-
 
       </div>
     </Tabs>

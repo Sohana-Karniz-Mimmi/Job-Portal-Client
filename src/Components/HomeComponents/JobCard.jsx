@@ -5,16 +5,30 @@ import { PiUsersFour } from 'react-icons/pi'
 // import { TfiUser } from 'react-icons/tfi'
 import { Link } from 'react-router-dom'
 import { motion } from "framer-motion"
+import { format } from 'date-fns';
+import useAuth from '../../Hook/useAuth';
+import toast from 'react-hot-toast';
 
 
 const JobCard = ({ job }) => {
+
+  const {user} = useAuth()
+
+  const showToast = () =>{
+    toast.error('You have to log in first to view details')
+  }
+  
   const {
     _id, job_title, postedDate, deadline, salary, photo, buyer,
     apply_count,
   } = job || {}
+
+      const postDate = format(postedDate, 'dd-MM-yyyy');
+    const applicationDeadline = format(deadline, 'dd-MM-yyyy');
   return (
     <motion.div
-      whileHover={{ scale: 1.1 }}
+      whileHover={{ scale: 1.05, transition:{duration: 0.3,
+        ease: [0.25, 0.25, 0.25, 0.75],} } }
       whileTap={{ scale: 0.9 }}
       className='lg::w-[365px] w-full px-4 py-3 bg-white rounded-md shadow-md '
     >
@@ -37,10 +51,10 @@ const JobCard = ({ job }) => {
         </h1>
         <div className='flex justify-between items-center'>
           <p className='mt-2 text-sm'>
-            Posting Date: {postedDate}
+            Posting Date: {postDate}
           </p>
           <p className='mt-2 text-sm'>
-            Deadline: {deadline}
+            Deadline: {applicationDeadline}
           </p>
         </div>
 
@@ -53,7 +67,10 @@ const JobCard = ({ job }) => {
             <PiUsersFour className=' text-lg' />Applicants: {apply_count}
           </p>
           <div className=' text-center'>
-            <Link to={`/job/${_id}`} className="md:px-4 md:py-2 px-3 py-2 border hover:bg-green-600 group-hover:text-white duration-300 border-green-600 text-center transition-all ease-out text-green-600 md:text-[16px] text-sm btn-outline rounded-md">View Details</Link>
+            {
+              user ? <Link to={`/job/${_id}`} className="md:px-4 md:py-2 px-3 py-2 border hover:bg-[#fe9703] group-hover:text-white duration-300 border-green-600 hover:border-[#fe9703] text-center transition-all ease-out md:text-[16px] text-sm btn-outline rounded-md hover:outline-none bg-green-600 text-white">View Details</Link> : <Link to={`/job/${_id}`} onClick={showToast} className="md:px-4 md:py-2 px-3 py-2 border hover:bg-[#fe9703] group-hover:text-white duration-300 border-green-600 hover:border-[#fe9703] text-center transition-all ease-out md:text-[16px] text-sm btn-outline rounded-md hover:outline-none bg-green-600 text-white">View Details</Link>
+            }
+            {/* <Link to={`/job/${_id}`} className="md:px-4 md:py-2 px-3 py-2 border hover:bg-[#fe9703] group-hover:text-white duration-300 border-green-600 hover:border-[#fe9703] text-center transition-all ease-out md:text-[16px] text-sm btn-outline rounded-md hover:outline-none bg-green-600 text-white">View Details</Link> */}
           </div>
 
         </div>
