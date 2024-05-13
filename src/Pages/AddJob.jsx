@@ -5,7 +5,7 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import useAuth from "../Hook/useAuth";
 // import { format } from 'date-fns';
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -13,7 +13,7 @@ import { useMutation } from "@tanstack/react-query";
 
 const AddJob = () => {
     const { user } = useAuth()
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     const [postedDate, setPostDate] = useState(new Date())
     const [deadline, setDeadline] = useState(new Date())
@@ -106,6 +106,7 @@ const AddJob = () => {
         },
         onSuccess: () => {
             console.log('Job Added Successfully')
+            navigate('/myJobs')
             Swal.fire({
                 title: "Job Added Successfully",
                 icon: "success"

@@ -9,7 +9,9 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 import { useContext } from "react";
 import axios from "axios"
 import { useLoaderData, useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
+import { useMutation } from "@tanstack/react-query";
+import Swal from 'sweetalert2'
 
 const Update = () => {
 
@@ -53,16 +55,34 @@ const Update = () => {
         }
         // console.table(jobs);
 
-
-        axios.put(`${import.meta.env.VITE_API_URL}/job/${_id}`, jobs)
-            .then(data => {
-                if (data.data.modifiedCount > 0) {
-                    navigate('/myJobs')
-                    toast.success('Update Successfully')
-                }
-                // console.log('inside post response data', data);
-            })
+        mutateAsync({_id, jobs })
+    //     axios.put(`${import.meta.env.VITE_API_URL}/job/${_id}`, jobs)
+    //         .then(data => {
+    //             if (data.data.modifiedCount > 0) {
+    //                 navigate('/myJobs')
+    //                 toast.success('Update Successfully')
+    //             }
+    //             // console.log('inside post response data', data);
+    //         })
     }
+
+     // Tanstack Query for post the data   
+     const { mutateAsync } = useMutation({
+        mutationFn: async ({_id, jobs }) => {
+            const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/job/${_id}`, jobs)
+            console.log(data)
+            return data
+        },
+        onSuccess: () => {
+            console.log('Job Update Successfully')
+            navigate('/myJobs')
+            Swal.fire({
+                title: "Job Update Successfully",
+                icon: "success"
+            });
+        },
+    })
+
 
     return (
         <div>
