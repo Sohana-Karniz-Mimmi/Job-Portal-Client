@@ -1,5 +1,4 @@
 import { Helmet } from "react-helmet-async";
-import Navbar from "../Components/Navbar";
 import { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
@@ -10,6 +9,7 @@ import Swal from 'sweetalert2'
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useMutation } from "@tanstack/react-query";
+import AddJobBanner from "../Components/AddJobBanner";
 
 const AddJob = () => {
     const { user } = useAuth()
@@ -121,31 +121,30 @@ const AddJob = () => {
         </Helmet>
 
             <div>
-                <Navbar></Navbar>
+                <AddJobBanner></AddJobBanner>
             </div>
-            <section className="p-6 barlow-condensed-regular dark:text-gray-900">
-
-                <form onSubmit={handleSubmit(handleSubmitForm)} className="container mx-auto flex justify-center space-y-12">
-                    <fieldset className=" py-10 md:px-16 px-5 rounded-md shadow-sm dark:bg-white border-2 mt-5">
-                        <div className="mb-6 text-center">
-                            <h3 className="md:text-4xl text-2xl font-extrabold">Add A Job</h3>
+            <section className=" p-6 barlow-condensed-regular dark:text-gray-900">
+                <form onSubmit={handleSubmit(handleSubmitForm)} className="lato container mx-auto flex justify-center space-y-12">
+                    <fieldset className=" py-5 md:px-[30px] px-5 rounded-md shadow-xl dark:bg-white mt-5">
+                        <div className="py-[10px] border-b mb-6 flex justify-between items-center">
+                            <h3 className="rubik text-xl font-medium">POST A JOB</h3>
                         </div>
-                        <div className=" md:w-[680px] w-[300px] grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
+                        <div className="lato lg:w-[848px] md:w-[680px] w-[300px] grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
 
 
                             {/* First Row  */}
                             <div className="col-span-full sm:col-span-3">
-                                <label className="text-base block mb-2">Job Title</label>
+                                <label className="lato font-semibold text-base text-[#333] block mb-2">Job Title</label>
                                 <div className="relative">
-                                    <input {...register("job_title", { required: true })} name="job_title" required type="text" className="w-full text-base border rounded-lg border-gray-300 focus:border-[#333] px-2 py-2 outline-none bg-transparent" placeholder="Enter as Job Title" />
+                                    <input {...register("job_title", { required: true })} name="job_title" required type="text" className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]" placeholder="Enter as Job Title" />
                                     {/* {errors.job_title && <span className="text-red-600">Please Enter a Job Title</span>} */}
 
                                 </div>
                             </div>
                             <div className="col-span-full sm:col-span-3">
-                                <label className="text-base block mb-2">Job Category</label>
+                                <label className="lato font-semibold text-base text-[#333] block mb-2">Job Category</label>
                                 <div className="relative">
-                                    <select {...register("category", { required: true })} name="category" type="text" required className="w-full text-base border rounded-lg border-gray-300 focus:border-[#333] px-2 py-2 outline-none bg-transparent">
+                                    <select {...register("category", { required: true })} name="category" type="text" required className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]">
                                         <option value="">Select Job...</option>
                                         <option value="On Site">On Site</option>
                                         <option value="Remote">Remote</option>
@@ -159,10 +158,10 @@ const AddJob = () => {
 
                             {/* 2nd Row  */}
                             <div className="col-span-full sm:col-span-3">
-                                <label className="text-base block mb-2">Job Posting Date</label>
+                                <label className="lato font-semibold text-base text-[#333] block mb-2">Job Posting Date</label>
                                 <div className="relative">
                                     <DatePicker
-                                        className='md:w-[332px] border w-[300px] rounded-lg px-2 py-2 '
+                                        className='lg:w-[416px] md:w-[332px] border w-[300px] rounded-lg px-2 py-[9px] '
                                         selected={postedDate}
                                         onChange={date => setPostDate(date)}
                                     />
@@ -170,10 +169,10 @@ const AddJob = () => {
                                 </div>
                             </div>
                             <div className="col-span-full sm:col-span-3">
-                                <label className="text-base block mb-2">Application Deadline</label>
+                                <label className="lato font-semibold text-base text-[#333] block mb-2">Application Deadline</label>
                                 <div className="relative">
                                     <DatePicker
-                                        className='md:w-[332px] border w-[300px] rounded-lg px-2 py-2 '
+                                        className='lg:w-[416px] md:w-[332px] border w-[300px] rounded-lg px-2 py-[9px] '
                                         selected={deadline}
                                         onChange={date => setDeadline(date)}
                                     />
@@ -182,17 +181,17 @@ const AddJob = () => {
 
                             {/* 3rd Row  */}
                             <div className="col-span-full sm:col-span-3">
-                                <label className="text-base block mb-2">Salary rang</label>
+                                <label className="lato font-semibold text-base text-[#333] block mb-2">Salary rang</label>
                                 <div className="salaryRange">
-                                    <input {...register("salaryRange", { required: true })} name="salaryRange" type="text" required className="w-full text-base border rounded-lg border-gray-300 focus:border-[#333] px-2 py-2 outline-none bg-transparent" placeholder="Enter Your Photo URL" />
+                                    <input {...register("salaryRange", { required: true })} name="salaryRange" type="text" required className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]" placeholder="Enter Your Photo URL" />
                                     {/* {errors.salaryRange && <span className="text-red-600">Please Enter Your Photo URL</span>} */}
 
                                 </div>
                             </div>
                             <div className="col-span-full sm:col-span-3">
-                                <label className="text-base block mb-2">Photo URL</label>
+                                <label className="lato font-semibold text-base text-[#333] block mb-2">Photo URL</label>
                                 <div className="relative">
-                                    <input {...register("photo", { required: true })} name="photo" type="text" required className="w-full text-base border rounded-lg border-gray-300 focus:border-[#333] px-2 py-2 outline-none bg-transparent" placeholder="Enter Your Photo URL" />
+                                    <input {...register("photo", { required: true })} name="photo" type="text" required className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]" placeholder="Enter Your Photo URL" />
                                     {/* {errors.photo && <span className="text-red-600">Please Enter Your Photo URL</span>} */}
 
                                 </div>
@@ -202,16 +201,16 @@ const AddJob = () => {
 
                             {/* User Name  and email */}
                             <div className="col-span-full sm:col-span-3">
-                                <label className="text-base block mb-2">Your Name</label>
+                                <label className="lato font-semibold text-base text-[#333] block mb-2">Your Name</label>
                                 <div className="relative">
-                                    <input  {...register("userName", { required: true })} value={displayName} name="userName" type="text" className="w-full text-base border rounded-lg border-gray-300 focus:border-[#333] px-2 py-2 outline-none bg-transparent" />
+                                    <input  {...register("userName", { required: true })} value={displayName} name="userName" type="text" className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]" />
 
                                 </div>
                             </div>
                             <div className="col-span-full sm:col-span-3">
-                                <label className="text-base block mb-2">Your Email</label>
+                                <label className="lato font-semibold text-base text-[#333] block mb-2">Your Email</label>
                                 <div className="relative">
-                                    <input  {...register("email", { required: true })} name="email" value={user.email} type="text" className="w-full text-base border rounded-lg border-gray-300 focus:border-[#333] px-2 py-2 outline-none bg-transparent" />
+                                    <input  {...register("email", { required: true })} name="email" value={user.email} type="text" className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]" />
 
                                 </div>
                             </div>
@@ -219,15 +218,15 @@ const AddJob = () => {
 
                             {/* description */}
                             <div className="col-span-full">
-                                <label className="text-base block mb-2">Job Description</label>
+                                <label className="lato font-semibold text-base text-[#333] block mb-2">Job Description</label>
                                 <div className="relative">
-                                    <textarea {...register("description", { required: true })} name="description" type="text" cols="10" rows="2" placeholder="Write a short description..." className="w-full text-base border rounded-lg border-gray-300 focus:border-[#333] px-2 py-2 outline-none bg-transparent"></textarea>
+                                    <textarea {...register("description", { required: true })} name="description" type="text" cols="10" rows="3" placeholder="Write a short description..." className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]"></textarea>
 
                                 </div>
                             </div>
                             {/* Btn */}
                             <div className="col-span-full">
-                                <input type="submit" value='Add Job' className="w-full text-lg p-2 rounded-md btn bg-green-600 hover:bg-green-600 text-white" />
+                                <input type="submit" value='Add Job' className="text-base py-[10px] px-[20px] rounded-[3px] btn bg-green-600 hover:bg-green-600 text-white" />
                             </div>
                         </div>
                     </fieldset>
