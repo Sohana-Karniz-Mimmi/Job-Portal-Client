@@ -27,14 +27,14 @@ const Modal = ({ _id, job_title, deadline, category, salary, buyer }) => {
 
     const handleApplyForm = async e => {
         e.preventDefault();
-        //     if (user?.email === buyer?.email){
-        //         navigate(location?.pathname);
-        //         return toast.error('Action not permitted!')
-        // }
+            if (user?.email === buyer?.email){
+                navigate(location?.pathname);
+                return toast.error('Employers cannot apply for their own jobs.')
+        }
 
         // date validation 
         if (isDeadlineOver) {
-            return toast.error('deadline Over')
+            return toast.error('Application deadline has passed. You cannot apply now')
         }
 
         const form = e.target
@@ -67,14 +67,14 @@ const Modal = ({ _id, job_title, deadline, category, salary, buyer }) => {
             </button>
 
             <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-                <div className="modal-box py-14">
+                <div className="modal-box pb-10">
 
                     <div className="flex items-center justify-between">
                         <h3 className="font-bold  text-lg pb-4">Apply_Now</h3>
                         <div className=" mb-6">
                             <form method="dialog">
                                 {/* if there is a button in form, it will close the modal */}
-                                <button className="border border-gray-300 p-1 mb-5 hover:bg-red-500 btn-outline">
+                                <button className="p-1 mb-5 hover:bg-red-500 btn-outline">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
                                 </button>
                             </form>
@@ -103,13 +103,10 @@ const Modal = ({ _id, job_title, deadline, category, salary, buyer }) => {
                         </label>
                         {/* Resume Link */}
                         <label className="input input-bordered flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70">
-                                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
-                            </svg>
                             <input required name='resumeLink' type="text" className="grow" placeholder="Resume Link" />
                         </label>
                         <div className="text-center">
-                            <button type="submit" className="btn btn-block">Submit</button>
+                            <button type="submit" className="btn btn-block bg-green-600 text-white hover:bg-green-600">Submit</button>
                         </div>
                     </form>
                 </div>

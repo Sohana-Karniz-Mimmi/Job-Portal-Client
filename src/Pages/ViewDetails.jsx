@@ -4,6 +4,7 @@ import { AiOutlineDollar } from "react-icons/ai";
 import { PiUsersFour } from "react-icons/pi";
 import Modal from "../Components/Modal";
 import DetailsBanner from "../Components/DetailsBanner";
+import { format } from 'date-fns';
 
 
 const ViewDetails = () => {
@@ -11,7 +12,7 @@ const ViewDetails = () => {
     const loadedDetailsData = useLoaderData()
     // console.log(loadedDetailsData);
 
-    const {_id, job_title, postedDate, deadline, salary, apply_count, description, category, buyer, photo } = loadedDetailsData
+    const { _id, job_title, postedDate, deadline, salary, apply_count, description, category, buyer, photo } = loadedDetailsData
 
     return (
         <div className=" relative">
@@ -32,13 +33,13 @@ const ViewDetails = () => {
                         </div>
 
                         <div>
-                            <Modal job_title={job_title} 
-                                    category={category} 
-                                    salary={salary}
-                                    _id={_id}
-                                    buyer={buyer}
-                                    deadline={deadline}
-                                    >
+                            <Modal job_title={job_title}
+                                category={category}
+                                salary={salary}
+                                _id={_id}
+                                buyer={buyer}
+                                deadline={deadline}
+                            >
                             </Modal>
                         </div>
                     </div>
@@ -117,7 +118,8 @@ const ViewDetails = () => {
                                         Posted
                                     </th>
                                     <td className="px-2 font-semibold text-[#1c2733] py-2">
-                                        {postedDate}
+                                        {
+                                            format(postedDate, 'dd-MM-yyyy')}
                                     </td>
                                 </tr>
                                 <tr className="text-black">
@@ -141,7 +143,8 @@ const ViewDetails = () => {
                                         Application Ends
                                     </th>
                                     <td className="px-2 font-semibold text-[#1c2733] py-2">
-                                        {deadline}
+                                        {
+                                        format(deadline, 'dd-MM-yyyy')}
                                     </td>
                                 </tr>
                             </tbody>
