@@ -40,22 +40,24 @@ const Update = () => {
           description,
     } = job || {}
 
-    const [postDate, setPostDate] = useState(new Date(postedDate))
-    const [applicationDeadline, setDeadline] = useState(new Date(deadline))
+    const [postDate, setPostDate] = useState(new Date(postedDate)|| new Date())
+    const [applicationDeadline, setDeadline] = useState(new Date(deadline) || new Date())
     
     const handleUpdateForm = data => {
+        const deadline = applicationDeadline;
+        const postedDate = postDate
 
         const { job_title, category, salaryRange, description, photo } = data
         const salary = parseFloat(salaryRange)
 
         const jobs = {
-            job_title, category, postDate, applicationDeadline, salary, description, photo, buyer: {
+            job_title, category, postedDate, deadline, salary, description, photo, buyer: {
                 email,
                 displayName,
                 buyerPhoto: user?.photoURL,
             },
         }
-        // console.table(jobs);
+        console.table(jobs);
 
         mutateAsync({ _id, jobs })
         //     axios.put(`${import.meta.env.VITE_API_URL}/job/${_id}`, jobs)

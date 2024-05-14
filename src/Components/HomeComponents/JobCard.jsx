@@ -29,7 +29,7 @@ const JobCard = ({ job }) => {
     <motion.div
       whileHover={{ scale: 1.05, transition:{duration: 0.3,
         ease: [0.25, 0.25, 0.25, 0.75],} } }
-      whileTap={{ scale: 0.9 }}
+      // whileTap={{ scale: 0.9 }}
       className='lg::w-[365px] w-full px-4 py-3 bg-white rounded-md shadow-md '
     >
       <div className='flex items-center justify-between'>

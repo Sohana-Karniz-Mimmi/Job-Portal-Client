@@ -16,7 +16,7 @@ const Blogs = () => {
             <section className="dark:bg-gray-100 dark:text-gray-800">
                 <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
 
-                    <div rel="noopener noreferrer" href="#" className="pt-10 block md:w-[s870px] w-full mx-auto dark:bg-gray-50">
+                    <div rel="noopener noreferrer" href="#" className="pt-10 block md:w-[870px] w-full mx-auto dark:bg-gray-50">
 
                         <div>
                             <h3 className="md:text-[22px] text-lg font-semibold  px-6  mb-4 group-hover:underline group-focus:underline">What is an access token and refresh token? How do they work and where should we store them on the client side?</h3>
