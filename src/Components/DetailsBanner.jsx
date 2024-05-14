@@ -6,14 +6,7 @@ const DetailsBanner = () => {
         <div>
             <section className="relative bg-cover bg-center bg-no-repeat h-[510px]" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${banner})` }}>
 
-                {/* <div
-                    className="absolute inset-0 sm:bg-transparent  sm:to-white/25 ltr:sm:bg-gradient-to-r rtl:sm:bg-gradient-to-l"
-                >
-                </div> */}
-
-                <div
-                    // className="relative lg:h-screen lg:items-center"
-                >
+                <div                >
                     <div className='bg-[#00000080] text-white'>
                         <Navbar></Navbar>
                     </div>
