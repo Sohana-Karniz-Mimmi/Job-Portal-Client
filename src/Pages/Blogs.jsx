@@ -1,7 +1,7 @@
-import { useState } from "react";
-import PropTypes from 'prop-types';
-import Navbar from "../Components/Navbar";
 import { Helmet } from "react-helmet-async";
+import BlogsBanner from "../Components/BlogsBanner";
+import { FaRegCalendarDays, FaRegComments, FaUser } from "react-icons/fa6";
+import code1 from "../assets/images/code.png"
 
 const Blogs = () => {
     return (
@@ -10,150 +10,112 @@ const Blogs = () => {
                 <title>Blogs - Job-Portal</title>
             </Helmet>
             <div>
-                <Navbar></Navbar>
+                <BlogsBanner></BlogsBanner>
             </div>
-       
-        <section className="relative z-20 overflow-hidden  pb-12 pt-20 dark:bg-dark lg:pb-[90px] lg:pt-[120px]">
-            <div className="container mx-auto">
-                <div className="-mx-4 flex flex-wrap">
-                    <div className="w-full px-4">
-                        <div className="mx-auto mb-[60px] max-w-[520px] text-center lg:mb-20">
-                            <span className="mb-2 block text-lg font-semibold text-primary">
-                                FAQ
-                            </span>
-                            <h2 className="mb-4 text-3xl font-bold text-dark  sm:text-[40px]/[48px]">
-                                Any Questions? Look Here
-                            </h2>
-                            <p className="text-base text-body-color dark:text-dark-6">
-                                There are many variations of passages of Lorem Ipsum available
-                                but the majority have suffered alteration in some form.
+
+            <section className="dark:bg-gray-100 dark:text-gray-800">
+                <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
+
+                    <div rel="noopener noreferrer" href="#" className="pt-10 block md:w-[s870px] w-full mx-auto dark:bg-gray-50">
+
+                        <div>
+                            <h3 className="md:text-[22px] text-lg font-semibold  px-6  mb-4 group-hover:underline group-focus:underline">What is an access token and refresh token? How do they work and where should we store them on the client side?</h3>
+                            <img src={code1} alt="" className="object-cover mx-auto md:w-[870px] w-full rounded h-[450px] lg:col-span-7 dark:bg-gray-500" />
+                            <div className="p-6 space-y-2 lg:col-span-5">
+
+                                <div className="flex">
+                                    <span className="border-r-2 pr-1.5 md:text-sm text-xs flex gap-2 items-center text-primary" ><FaRegCalendarDays className="text-lg text-primary" /> May 14, 2024</span>
+                                    <span className="px-1.5 border-r-2 md:text-sm text-xs flex gap-2 items-center  text-primary" ><FaUser className="text-base text-primary" /> By Sohana</span>
+                                    <span className="pl-1.5 md:text-sm text-xs flex gap-2 items-center  text-primary" ><FaRegComments className="text-lg text-primary" /> 5k </span>
+                                </div>
+
+                                <p className="">
+                                    An access token and a refresh token are both components of an authentication and authorization system commonly used in web applications and APIs. Heres a breakdown of each:
+
+                                    <ul className="list-decimal pl-10 pt-4">
+                                        <li> <strong>Access Token:</strong> A credential used by a client to access protected resources on an API server. It's short-lived and obtained after successful authentication.
+                                        </li>
+                                        <li><strong>Refresh Token:</strong> A credential used to obtain a new access token once the current one expires. It's long-lived and helps maintain user sessions without frequent reauthentication.
+                                        </li>
+                                    </ul>
+
+                                    <div className="pt-4">
+                                        <p>
+                                            <strong>Working Mechanism:</strong> When a user logs in or authenticates for the first time, the server issues both an access token and a refresh token. The access token is sent with each request to access protected resources. When the access token expires, the client can use the refresh token to request a new access token from the server without requiring the user to log in again.
+
+                                        </p>
+                                        <p> <strong>Storage:</strong> Access tokens should be stored on the client side, typically in memory or local storage, to include them in requests easily. However, it's crucial to ensure that they are not exposed to unauthorized access. Refresh tokens, being more sensitive, should be stored securely on the server side.
+                                        </p>
+                                    </div>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section className="dark:bg-gray-100 dark:text-gray-800">
+                <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
+
+                    <div rel="noopener noreferrer" href="#" className="pt-10 block md:w-[870px] w-full mx-auto dark:bg-gray-50">
+
+                        <h3 className="md:text-[22px] text-lg font-semibold  px-6  mb-4 group-hover:underline group-focus:underline">What is express js? What is Nest JS</h3>
+                        <img src='https://www.split.io/wp-content/uploads/Blog-2160x1080-Building-a-CRUD-API-with-Node-js-and-Express-1920x960.png' alt="" className="object-cover mx-auto md:w-[870px] w-full rounded h-[450px] lg:col-span-7 dark:bg-gray-500" />
+                        <div className="p-6 space-y-2 lg:col-span-5">
+
+                            <div className="flex">
+                                <span className="border-r-2 pr-1.5 md:text-sm text-xs flex gap-2 items-center  text-primary" ><FaRegCalendarDays className="text-lg text-primary" /> May 14, 2024</span>
+                                <span className="px-1.5 border-r-2 md:text-sm text-xs flex gap-2 items-center  text-primary" ><FaUser className="text-base text-primary" /> By Sohana</span>
+                                <span className="pl-1.5 md:text-sm text-xs flex gap-2 items-center  text-primary" ><FaRegComments className="text-lg text-primary" /> 5k </span>
+                            </div>
+
+                            <p className="">
+                                <div className="pt-4">
+                                    <p>
+                                        <strong>Express.js:</strong> Express.js is a minimal and flexible Node.js web application framework that provides a robust set of features for building web and mobile applications. It simplifies the process of creating powerful web servers and APIs by providing a thin layer of fundamental web application features, allowing developers to build upon it as needed. Express.js is widely used in the Node.js ecosystem for its simplicity and performance.
+
+                                    </p>
+                                    <p className="mt-2"> <strong>Nest.js:</strong> Nest.js is a progressive Node.js framework for building efficient, reliable, and scalable server-side applications. It is built with TypeScript and heavily inspired by Angular, providing a modular and well-organized structure for building complex applications. Nest.js leverages TypeScript's features to offer strong typing, dependency injection, and intuitive design patterns, making it suitable for large-scale enterprise applications.
+                                    </p>
+                                </div>
                             </p>
                         </div>
                     </div>
                 </div>
+            </section>
 
-                <div className="-mx-4 flex flex-wrap">
-                    <div className="w-full px-4 lg:w-1/2">
-                        <AccordionItem
-                            header="What is an access token and refresh token?"
-                            text="Access token: A credential representing authorization to access a resource, issued upon successful authentication. Stored on the client side (e.g., in memory or local storage) and sent with each request.
-                            Refresh token: A long-lived credential used to obtain a new access token once it expires. Stored securely on the server side and used to request new access tokens without requiring reauthentication."
-                            
-                        />
-                        <AccordionItem
-                            header="How do they work and where should
-                            we store them on the client side?"
-                            text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
-                        />
-                        <AccordionItem
-                            header="How long we deliver your first blog post?"
-                            text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
-                        />
-                    </div>
-                    <div className="w-full px-4 lg:w-1/2">
-                        <AccordionItem
-                            header="How long we deliver your first blog post?"
-                            text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
-                        />
-                        <AccordionItem
-                            header="How long we deliver your first blog post?"
-                            text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
-                        />
-                        <AccordionItem
-                            header="How long we deliver your first blog post?"
-                            text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
-                        />
+            <section className="dark:bg-gray-100 dark:text-gray-800">
+                <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
+
+                    <div rel="noopener noreferrer" href="#" className="pt-10 block md:w-[870px] w-full mx-auto dark:bg-gray-50">
+
+                        <h3 className="md:text-[22px] text-lg font-semibold  px-6  mb-4 group-hover:underline group-focus:underline">Explain your code. </h3>
+                        <img src='https://img.freepik.com/free-photo/programming-background-concept_23-2150170137.jpg' alt="" className="object-cover mx-auto md:w-[870px] w-full rounded h-[450px] lg:col-span-7 dark:bg-gray-500" />
+                        <div className="p-6 space-y-2 lg:col-span-5">
+
+                            <div className="flex">
+                                <span className="border-r-2 pr-1.5 md:text-sm text-xs flex gap-2 items-center  text-primary" ><FaRegCalendarDays className="text-lg text-primary" /> May 14, 2024</span>
+                                <span className="px-1.5 border-r-2 md:text-sm text-xs flex gap-2 items-center  text-primary" ><FaUser className="text-base text-primary" /> By Sohana</span>
+                                <span className="pl-1.5 md:text-sm text-xs flex gap-2 items-center  text-primary" ><FaRegComments className="text-lg text-primary" /> 5k </span>
+                            </div>
+
+                            <p className="">
+
+                                <div className="pt-4">
+                                    <p>
+                                        In our code, we utilize Express.js to create a RESTful API for managing user authentication and authorization. We implement JSON Web Tokens (JWT) for handling access tokens and refresh tokens securely. The authentication process involves validating user credentials, generating JWT tokens (access and refresh tokens), and securely storing the refresh token on the server side.
+                                    </p>
+                                </div>
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div className="absolute bottom-0 right-0 z-[-1]">
-                <svg
-                    width="1440"
-                    height="886"
-                    viewBox="0 0 1440 886"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        opacity="0.5"
-                        d="M193.307 -273.321L1480.87 1014.24L1121.85 1373.26C1121.85 1373.26 731.745 983.231 478.513 729.927C225.976 477.317 -165.714 85.6993 -165.714 85.6993L193.307 -273.321Z"
-                        fill="url(#paint0_linear)"
-                    />
-                    <defs>
-                        <linearGradient
-                            id="paint0_linear"
-                            x1="1308.65"
-                            y1="1142.58"
-                            x2="602.827"
-                            y2="-418.681"
-                            gradientUnits="userSpaceOnUse"
-                        >
-                            <stop stop-color="#3056D3" stop-opacity="0.36" />
-                            <stop offset="1" stop-color="#F5F2FD" stop-opacity="0" />
-                            <stop offset="1" stop-color="#F5F2FD" stop-opacity="0.096144" />
-                        </linearGradient>
-                    </defs>
-                </svg>
-            </div>
-        </section>
-             
         </div>
     );
 };
 
 export default Blogs;
 
-const AccordionItem = ({ header, text }) => {
-    const [active, setActive] = useState(false);
-
-    const handleToggle = () => {
-        event.preventDefault();
-        setActive(!active);
-    };
-    return (
-        <div className="mb-8 w-full rounded-lg bg-white p-4 shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:bg-dark-2 dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] sm:p-8 lg:px-6 xl:px-8">
-            <button
-                className={`faq-btn flex w-full text-left`}
-                onClick={() => handleToggle()}
-            >
-                <div className="mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg bg-primary/5 text-primary dark:bg-white/5">
-                    <svg
-                        className={`fill-primary stroke-primary duration-200 ease-in-out ${active ? "rotate-180" : ""
-                            }`}
-                        width="17"
-                        height="10"
-                        viewBox="0 0 17 10"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            d="M7.28687 8.43257L7.28679 8.43265L7.29496 8.43985C7.62576 8.73124 8.02464 8.86001 8.41472 8.86001C8.83092 8.86001 9.22376 8.69083 9.53447 8.41713L9.53454 8.41721L9.54184 8.41052L15.7631 2.70784L15.7691 2.70231L15.7749 2.69659C16.0981 2.38028 16.1985 1.80579 15.7981 1.41393C15.4803 1.1028 14.9167 1.00854 14.5249 1.38489L8.41472 7.00806L2.29995 1.38063L2.29151 1.37286L2.28271 1.36548C1.93092 1.07036 1.38469 1.06804 1.03129 1.41393L1.01755 1.42738L1.00488 1.44184C0.69687 1.79355 0.695778 2.34549 1.0545 2.69659L1.05999 2.70196L1.06565 2.70717L7.28687 8.43257Z"
-                            fill=""
-                            stroke=""
-                        />
-                    </svg>
-                </div>
-
-                <div className="w-full">
-                    <h4 className="mt-1 text-lg font-semibold text-dark ">
-                        {header}
-                    </h4>
-                </div>
-            </button>
-
-            <div
-                className={`pl-[62px] duration-200 ease-in-out ${active ? "block" : "hidden"
-                    }`}
-            >
-                <p className="py-3 text-base leading-relaxed text-body-color dark:text-dark-6">
-                    {text}
-                </p>
-            </div>
-        </div>
-    );
-};
-
-AccordionItem.propTypes = {
-    header: PropTypes.node,
-    text: PropTypes.node,
-};

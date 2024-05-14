@@ -68,7 +68,7 @@ const ViewDetails = () => {
 
                     {/* Description */}
 
-                    <div className="p-4 rounded-lg border my-8" >
+                    <div className="p-4 rounded-lg border my-8 " >
                         <h2 className="md:text-3xl text-xl font-medium">Description</h2>
                         <div className=" pb-4 pt-3 text-[15px] flex justify-between items-center font-medium">
                             <p className="text-[#667488]">{description}</p>
