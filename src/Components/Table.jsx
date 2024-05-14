@@ -4,8 +4,8 @@ import { format } from 'date-fns';
 
 const TdStyle = {
     ThStyle: `w-1/6 min-w-[160px] border-l border-transparent py-3 px-3 text-base font-medium text-white`,
-    TdStyle: `text-dark border-b border-l border-[#E8E8E8] bg-[#F3F6FF] dark:bg-dark-3 dark:border-dark dark:text-dark-7 py-1.5 px-2 text-center text-sm font-medium`,
-    TdStyle2: `text-dark border-b border-[#E8E8E8] bg-white dark:border-dark dark:bg-dark-2 dark:text-dark-7 py-2.5 px-2 text-center text-base font-medium`,
+    TdStyle: `text-dark border-b  dark:bg-dark-3 dark:border-dark dark:text-dark-7 py-1.5 px-2 text-center text-sm font-medium`,
+    TdStyle2: `text-dark border-b  bg-white dark:border-dark dark:bg-dark-2 dark:text-dark-7 py-2.5 px-2 text-center text-base font-medium`,
     TdButton: `inline-block px-6 py-2.5 border rounded-md border-green-600 hover:border-[#fe9703] hover:bg-[#fe9703] bg-green-600 text-white font-medium`,
 }
 

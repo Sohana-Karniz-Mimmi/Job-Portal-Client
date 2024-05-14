@@ -1,10 +1,11 @@
 import { Helmet } from "react-helmet-async";
-import Navbar from "../Components/Navbar";
 import { useState } from "react";
 import JobPage from "../Components/Pdf";
 import useAxiosSecure from "../Hook/useAxiosSecure";
 import useAuth from "../Hook/useAuth";
 import { useQuery } from "@tanstack/react-query";
+import AppliedBanner from "../Components/ApplidBanner";
+import { format } from 'date-fns';
 
 // import axios from "axios";
 // import { RiArrowDropDownLine } from "react-icons/ri";
@@ -57,7 +58,7 @@ const AppliedJobs = () => {
             </Helmet>
 
             <div>
-                <Navbar></Navbar>
+                <AppliedBanner></AppliedBanner>
             </div>
 
 
@@ -73,7 +74,7 @@ const AppliedJobs = () => {
                         value={selectedCategory}
                         name='category'
                         id='category'
-                        className='border py-4 px-8 rounded-lg border-green-600 outline-none'
+                        className='border md:py-4 py-2 mb-2 md:px-8 px-5 rounded-lg border-green-600 outline-none'
                     >
                         <option className="bg-white text-black" value=''>Filter By Category</option>
                         <option className="bg-white text-black" value='All'>All</option>
@@ -150,7 +151,7 @@ const AppliedJobs = () => {
 
                                                     {/* Deadline */}
                                                     <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                        {apply.deadline}
+                                                        {format(apply.deadline, 'dd-MM-yyyy')}
                                                     </td>
 
                                                     {/* Price */}
