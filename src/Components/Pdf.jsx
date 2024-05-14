@@ -13,7 +13,7 @@ const MyDocument = ({ jobDetails }) => (
         <Text style={styles.title}>Applied Job Summary</Text>
         <View style={styles.info}>
           <Text style={styles.dName}>Job Title: {jobDetails.job_title}</Text>
-          <Text style={styles.dName}>Deadline: {format(jobDetails.deadline, 'dd-MM-yyyy')}</Text>
+          <Text style={styles.dName}>Apply Date: {format(jobDetails.deadline, 'dd-MM-yyyy')}</Text>
           <Text style={styles.dName}>Salary: ${jobDetails.salary}</Text>
           <Text style={styles.dName}>Category: {jobDetails.category}</Text>
           <Text style={styles.dName}>Resume Link: {jobDetails.resumeLink}</Text>

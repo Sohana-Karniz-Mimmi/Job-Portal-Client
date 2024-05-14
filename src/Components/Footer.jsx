@@ -15,8 +15,7 @@ const Footer = () => {
                     <span className="">J<span className="text-orange-500">o</span>b<span className="text-orange-500">Portal</span></span></Link>
                 </Link>
                 <p className="mb-7 text-[#a1a6ab] text-body-color">
-                  Sed ut perspiciatis undmnis is iste natus error sit amet
-                  voluptatem totam rem aperiam.
+                  Unlock your career potential with JobPortal - your gateway to endless job opportunities.
                 </p>
                 <p className="flex md:justify-start justify-center items-center text-sm font-medium text-dark dark:text-[#a1a6ab]">
                   <span className="mr-3 text-primary">

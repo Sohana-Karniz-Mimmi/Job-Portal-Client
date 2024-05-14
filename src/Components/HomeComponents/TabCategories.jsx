@@ -68,10 +68,10 @@ const TabCategories = () => {
         <div className=' text-[#fe9703] flex items-center justify-center'>
           <TabList>
             <Tab>All Jobs</Tab>
-            <Tab>Part Time</Tab>
-            <Tab>Hybrid</Tab>
-            <Tab>Remote Job</Tab>
             <Tab>On Site Job</Tab>
+            <Tab>Remote Job</Tab>
+            <Tab>Hybrid</Tab>
+            <Tab>Part Time</Tab>
           </TabList>
         </div>
 

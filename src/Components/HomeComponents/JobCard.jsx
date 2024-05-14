@@ -12,23 +12,27 @@ import toast from 'react-hot-toast';
 
 const JobCard = ({ job }) => {
 
-  const {user} = useAuth()
+  const { user } = useAuth()
 
-  const showToast = () =>{
+  const showToast = () => {
     toast.error('You have to log in first to view details')
   }
-  
+
   const {
     _id, job_title, postedDate, deadline, salary, photo, buyer,
     apply_count,
   } = job || {}
 
-      const postDate = format(postedDate, 'dd-MM-yyyy');
-    const applicationDeadline = format(deadline, 'dd-MM-yyyy');
+  const postDate = format(postedDate, 'dd-MM-yyyy');
+  const applicationDeadline = format(deadline, 'dd-MM-yyyy');
   return (
     <motion.div
-      whileHover={{ scale: 1.05, transition:{duration: 0.3,
-        ease: [0.25, 0.25, 0.25, 0.75],} } }
+      whileHover={{
+        scale: 1.05, transition: {
+          duration: 0.3,
+          ease: [0.25, 0.25, 0.25, 0.75],
+        }
+      }}
       // whileTap={{ scale: 0.9 }}
       className='lg::w-[365px] w-full px-4 py-3 bg-white rounded-md shadow-md '
     >
@@ -51,7 +55,7 @@ const JobCard = ({ job }) => {
         </h1>
         <div className='flex justify-between items-center'>
           <p className='mt-2 text-sm'>
-            Posting Date: {postDate}
+            Posted at - {postDate}
           </p>
           <p className='mt-2 text-sm'>
             Deadline: {applicationDeadline}

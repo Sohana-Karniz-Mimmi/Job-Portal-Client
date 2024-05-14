@@ -47,7 +47,7 @@ const ExtraSection = () => {
                             Need Any Jobs?
                         </h1>
                         <p>
-                            But must expla to you how all this mistaken idea of denouncing pleure and praising pain was born
+                            Whether you're exploring new career paths or seeking part-time gigs, our platform connects you with tailored job listings that fit your needs.
                         </p>
                     </div>
                 </div>
@@ -61,7 +61,7 @@ const ExtraSection = () => {
                             Post Your Jobs
                         </h1>
                         <p>
-                            But must expla to you how all this mistaken idea of denouncing pleure and praising pain was born
+                            Streamline your hiring process and find the perfect fit for your team with JobPortal's easy-to-use job posting feature.
                         </p>
                     </div>
                 </div>
@@ -74,8 +74,8 @@ const ExtraSection = () => {
                         <h1 className='mt-2 text-lg font-semibold '>
                             Apply to Jobs
                         </h1>
-                        <p>
-                            But must expla to you how all this mistaken idea of denouncing pleure and praising pain was born
+                        <p> Discover your dream job
+                            Explore exciting opportunities across industries and apply seamlessly through JobPortal.
                         </p>
                     </div>
                 </div>
