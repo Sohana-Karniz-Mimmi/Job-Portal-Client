@@ -182,7 +182,7 @@ const AppliedJobs = () => {
                                                         <button className="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
 
                                                             {/*Pdf  */}
-                                                            <JobPage />
+                                                            <JobPage job={apply} />
                                                         </button>
                                                     </td>
                                                 </tr>)
