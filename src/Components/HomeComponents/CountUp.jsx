@@ -1,5 +1,5 @@
 import { MdCardGiftcard } from 'react-icons/md';
-import count from '../../assets/images/count.jpg'
+import count from '../../assets/images/count.jpg';
 import { FaRegCircleUser } from 'react-icons/fa6';
 import { FaRegFileAlt } from 'react-icons/fa';
 import { TbBrandCampaignmonitor } from 'react-icons/tb';
@@ -9,11 +9,10 @@ import { motion } from "framer-motion"
 const Counting = () => {
 
     return (
-        <section className="relative bg-cover mb-12 bg-center bg-no-repeat h-[222px]" style={{
+        <section className="relative md:flex hidden bg-cover mb-12 bg-center bg-no-repeat h-[222px]" style={{
             backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0)), url(${count})`
         }}
         >
-
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{
