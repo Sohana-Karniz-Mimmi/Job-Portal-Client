@@ -156,7 +156,7 @@ const Update = () => {
                             <div className="col-span-full sm:col-span-3">
                                 <label className="lato font-semibold text-base text-[#333] block mb-2">Salary rang</label>
                                 <div className="salaryRange">
-                                    <input {...register("salaryRange", { required: true })} defaultValue={salary} name="salaryRange" type="text" required className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]" placeholder="Enter Your Photo URL" />
+                                    <input {...register("salaryRange", { required: true })} defaultValue={salary} name="salaryRange" type="text" required className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]" placeholder="Salary" />
                                     {/* {errors.salaryRange && <span className="text-red-600">Please Enter Your Photo URL</span>} */}
 
                                 </div>
