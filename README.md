@@ -24,3 +24,5 @@ For the Optional task, we used the following npm packages:
 - [React-tooltip](https://react-tooltip.com/)
 - [React Hook Form](https://react-hook-form.com/)
 - [Swiper Slider](https://swiperjs.com/)
+- [React-Tabs](https://www.npmjs.com/package/react-tabs)
+
