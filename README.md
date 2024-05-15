@@ -1,6 +1,6 @@
-# Job Portal
+# Website Name: Job Portal
 
-Visit the live site [Job Portal](https://job-portal-3285e.web.app)
+Live Site URL [Job Portal](https://job-portal-3285e.web.app)
 
 ## Features 
 
