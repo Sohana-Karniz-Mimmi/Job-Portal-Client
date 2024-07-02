@@ -26,18 +26,17 @@ const ExtraSection = () => {
                 </p>
             </motion.div>
 
-            <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{
-                    opacity: 1, y: 0, transition: {
-                        type: 'tween',
-                        duration: 0.8,
-                        ease: [0.25, 0.25, 0.25, 0.75],
-                    }
-                }}
-                viewport={{ once: false, amount: 0.7 }}
+            <div
                 className='grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3'>
-                <div className='lg::w-[365px] w-full py-12 px-10 text-center rounded-md shadow-md bg-[#f5f7fc]'>
+                <motion.div initial={{ opacity: 0, y: 50 }}
+                    whileInView={{
+                        opacity: 1, y: 0, transition: {
+                            type: 'tween',
+                            duration: 0.8,
+                            ease: [0.25, 0.25, 0.25, 0.75],
+                        }
+                    }}
+                    viewport={{ once: false, amount: 0.7 }} className='lg::w-[365px] w-full py-12 px-10 text-center rounded-md shadow-md bg-[#f5f7fc]'>
 
                     <div className="mx-auto mb-5">
                         <img className='mx-auto' src={icon1} />
@@ -50,8 +49,16 @@ const ExtraSection = () => {
                             Whether you're exploring new career paths or seeking part-time gigs, our platform connects you with tailored job listings that fit your needs.
                         </p>
                     </div>
-                </div>
-                <div className='lg::w-[365px] w-full py-12 px-10 text-center rounded-md shadow-md bg-[#f5f7fc]'>
+                </motion.div>
+                <motion.div initial={{ opacity: 0, y: 50 }}
+                    whileInView={{
+                        opacity: 1, y: 0, transition: {
+                            type: 'tween',
+                            duration: 0.8,
+                            ease: [0.25, 0.25, 0.25, 0.75],
+                        }
+                    }}
+                    viewport={{ once: false, amount: 0.7 }} className='lg::w-[365px] w-full py-12 px-10 text-center rounded-md shadow-md bg-[#f5f7fc]'>
 
                     <div className="mx-auto mb-5">
                         <img className='mx-auto' src={icon2} />
@@ -64,8 +71,16 @@ const ExtraSection = () => {
                             Streamline your hiring process and find the perfect fit for your team with JobPortal's easy-to-use job posting feature.
                         </p>
                     </div>
-                </div>
-                <div className='lg::w-[365px] w-full py-12 px-10 text-center rounded-md shadow-md bg-[#f5f7fc]'>
+                </motion.div>
+                <motion.div initial={{ opacity: 0, y: 50 }}
+                    whileInView={{
+                        opacity: 1, y: 0, transition: {
+                            type: 'tween',
+                            duration: 0.8,
+                            ease: [0.25, 0.25, 0.25, 0.75],
+                        }
+                    }}
+                    viewport={{ once: false, amount: 0.7 }} className='lg::w-[365px] w-full py-12 px-10 text-center rounded-md shadow-md bg-[#f5f7fc]'>
 
                     <div className="mx-auto mb-5">
                         <img className='mx-auto' src={icon3} />
@@ -78,8 +93,8 @@ const ExtraSection = () => {
                             Explore exciting opportunities across industries and apply seamlessly through JobPortal.
                         </p>
                     </div>
-                </div>
-            </motion.div>
+                </motion.div>
+            </div>
         </div>
     )
 };

@@ -2,27 +2,66 @@
 
 Live Site URL [Job Portal](https://job-portal-3285e.web.app)
 
-## Features 
+## Project Overview
+- **Concept**: A user-friendly job-seeking website.
+- **Problem Solved**: Provides a platform for job seekers to find and apply for jobs, and for employers to post job listings.
 
-- **User-Friendly Interface**: JobSeeker offers a clean and intuitive interface, making it easy for users to navigate and find relevant job listings.
-- **Advanced Search Filters**: Users can filter job listings based on categories such as On-Site, Remote, Part-Time, and Hybrid, enabling them to find jobs that match their preferences.
-- **Personalized Job Recommendations**: JobSeeker provides personalized job recommendations based on user preferences and search history, helping users discover relevant opportunities.
-- **Secure Authentication**: Secure authentication using JWT ensures that user data is protected, and users can safely access their accounts and manage their job applications.
-- **Responsive Design**: JobSeeker is fully responsive, ensuring a seamless experience across desktop, tablet, and mobile devices, allowing users to access job listings anytime, anywhere.
+## Features
+- **Job Categories**: Users can filter jobs by categories (On-Site, Remote, Hybrid, Part-Time).
+- **User Authentication**: Secure login and registration system with email and Google sign-in options.
+- **Job Management**: Users can add, update, and delete job listings.
+
+## Technology Used
+- **Frontend**: React, Tailwind CSS, DaisyUI
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB
+- **Authentication**: Firebase
+
+## How to Clone and Run Locally
+
+### Frontend
+1. **Clone the repository**:
+   ```sh
+   git clone https://github.com/Sohana-Karniz-Mimmi/Job-Portal-Client.git
+
+2. **Navigate to frontend directory**:
+   ```sh
+   cd Job Portal/frontend
+
+3. **Install dependencies**:
+   ```sh
+   npm install
+
+4. **Set up environment variables**:
+   - Create a .env file in the frontend directory. 
+   - Add necessary Firebase config keys.
+
+5. **Start the development server**:
+   ```sh
+   npm run dev
+
+6. **Access the frontend website**:
+   - Open your browser and go to http://localhost:5000.
+
+### Backend
+1. **Navigate to backend directory**:
+   ```sh
+   cd Job Portal/backend
+
+2. **Install dependencies**:
+   ```sh
+   npm install
+
+3. **Set up environment variables**:  
+   - Create a .env file in the  backend directory..  
+   - Add MongoDB credentials and any other necessary configurations.
+
+4. **Access the backend API**:
+   ```sh
+   npm start
 
 
-## npm Packages Used
+5. **Access the frontend website**:
+   - Open your browser and go to http://localhost:8000.
 
-For the challenges task, we used the following npm packages:
-
-- [TanStack Query](https://tanstack.com/)
-- [Framer Motion](https://www.framer.com/?utm_source=motion-readme)
-- [React-to-Pdf](https://www.npmjs.com/package/react-to-pdf)
-
-For the Optional task, we used the following npm packages:
-
-- [React-tooltip](https://react-tooltip.com/)
-- [React Hook Form](https://react-hook-form.com/)
-- [Swiper Slider](https://swiperjs.com/)
-- [React-Tabs](https://www.npmjs.com/package/react-tabs)
 
